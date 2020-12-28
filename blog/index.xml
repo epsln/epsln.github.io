@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on epsilon dumblog</title>
-    <link>epsln.github.io/blog/</link>
+    <link>/blog/</link>
     <description>Recent content in Blogs on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Dec 2020 18:38:23 +0100</lastBuildDate><atom:link href="epsln.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Dec 2020 18:38:23 +0100</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ullam Spiral</title>
-      <link>epsln.github.io/blog/ullam/</link>
+      <link>/blog/ullam/</link>
       <pubDate>Mon, 28 Dec 2020 18:38:23 +0100</pubDate>
       
-      <guid>epsln.github.io/blog/ullam/</guid>
+      <guid>/blog/ullam/</guid>
       <description>This post is the first part of an attempt at explaining most of the small animations I have done in the past few years.
 The Ullam Spiral is fairly straight forward: by arranging the integers in a spiral, and only marking the primes, you obtain strange, and frankly cool looking patterns.
 Creating this sort of image is very simple. I simply created a basic loop that construct the spiral, which follows the following pattern: ULDDRRRUUUULLLL&amp;hellip;, assigning an integer to each step and checking if it was prime.</description>
@@ -20,10 +20,10 @@ Creating this sort of image is very simple. I simply created a basic loop that c
     
     <item>
       <title>Chapter 0: Introduction to epsilon</title>
-      <link>epsln.github.io/blog/intro/</link>
+      <link>/blog/intro/</link>
       <pubDate>Tue, 22 Dec 2020 23:09:32 +0100</pubDate>
       
-      <guid>epsln.github.io/blog/intro/</guid>
+      <guid>/blog/intro/</guid>
       <description>Hi. I&amp;rsquo;m Epsilon, and this is a blog.
 I&amp;rsquo;m a Computer Engineer, specialised in Machine Learning and Computer Vision. Most of my research works centers around automated detection in Archaeology. I have introduced the use of YOLO in LiDAR detection for this purpose, in a research internship at the University of Leiden. I have also worked in rare event detection in train borne systems at the SNCF. I am currently available for hire.</description>
     </item>
