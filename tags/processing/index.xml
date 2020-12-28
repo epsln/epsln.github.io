@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>processing on epsilon dumblog</title>
+    <link>epsln.github.io/tags/processing/</link>
+    <description>Recent content in processing on epsilon dumblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Dec 2020 18:38:23 +0100</lastBuildDate><atom:link href="epsln.github.io/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ullam Spiral</title>
+      <link>epsln.github.io/blog/ullam/</link>
+      <pubDate>Mon, 28 Dec 2020 18:38:23 +0100</pubDate>
+      
+      <guid>epsln.github.io/blog/ullam/</guid>
+      <description>This post is the first part of an attempt at explaining most of the small animations I have done in the past few years.
+The Ullam Spiral is fairly straight forward: by arranging the integers in a spiral, and only marking the primes, you obtain strange, and frankly cool looking patterns.
+Creating this sort of image is very simple. I simply created a basic loop that construct the spiral, which follows the following pattern: ULDDRRRUUUULLLL&amp;hellip;, assigning an integer to each step and checking if it was prime.</description>
+    </item>
+    
+  </channel>
+</rss>

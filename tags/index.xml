@@ -5,6 +5,34 @@
     <link>epsln.github.io/tags/</link>
     <description>Recent content in Tags on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="epsln.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Dec 2020 18:38:23 +0100</lastBuildDate><atom:link href="epsln.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>math</title>
+      <link>epsln.github.io/tags/math/</link>
+      <pubDate>Mon, 28 Dec 2020 18:38:23 +0100</pubDate>
+      
+      <guid>epsln.github.io/tags/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>primes</title>
+      <link>epsln.github.io/tags/primes/</link>
+      <pubDate>Mon, 28 Dec 2020 18:38:23 +0100</pubDate>
+      
+      <guid>epsln.github.io/tags/primes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>processing</title>
+      <link>epsln.github.io/tags/processing/</link>
+      <pubDate>Mon, 28 Dec 2020 18:38:23 +0100</pubDate>
+      
+      <guid>epsln.github.io/tags/processing/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

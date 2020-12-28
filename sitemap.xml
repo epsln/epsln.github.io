@@ -4,16 +4,41 @@
   
   <url>
     <loc>epsln.github.io/blog/</loc>
-    <lastmod>2020-12-22T23:09:32+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>epsln.github.io/blog/intro/</loc>
-    <lastmod>2020-12-22T23:09:32+01:00</lastmod>
+    <lastmod>2020-12-28T18:38:23+01:00</lastmod>
   </url>
   
   <url>
     <loc>epsln.github.io/</loc>
+    <lastmod>2020-12-28T18:38:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>epsln.github.io/tags/math/</loc>
+    <lastmod>2020-12-28T18:38:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>epsln.github.io/tags/primes/</loc>
+    <lastmod>2020-12-28T18:38:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>epsln.github.io/tags/processing/</loc>
+    <lastmod>2020-12-28T18:38:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>epsln.github.io/tags/</loc>
+    <lastmod>2020-12-28T18:38:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>epsln.github.io/blog/ullam/</loc>
+    <lastmod>2020-12-28T18:38:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>epsln.github.io/blog/intro/</loc>
     <lastmod>2020-12-22T23:09:32+01:00</lastmod>
   </url>
   
@@ -23,10 +48,6 @@
   
   <url>
     <loc>epsln.github.io/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>epsln.github.io/tags/</loc>
   </url>
   
 </urlset>
