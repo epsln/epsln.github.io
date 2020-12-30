@@ -6,7 +6,17 @@
     <description>Recent content in math on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Dec 2020 18:38:23 +0100</lastBuildDate><atom:link href="/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Dec 2020 18:54:18 +0100</lastBuildDate><atom:link href="/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gaussians Primes</title>
+      <link>/blog/gaussints/</link>
+      <pubDate>Tue, 29 Dec 2020 18:54:18 +0100</pubDate>
+      
+      <guid>/blog/gaussints/</guid>
+      <description>On this second episode of &amp;ldquo;what has Epsilon done for the past years&amp;rdquo;, we&amp;rsquo;re gonna talk about&amp;hellip; Prime Numbers. Code is available here.
+The primes does have this capacity to create some interesting looking things, I&amp;rsquo;ll give them that. The Gaussian integers are simply complex numbers whose real and imaginary part are integers, and whose modulus is prime. If one component of this number p is 0, then p is prime only if the other component is prime and p % 4 = 3.</description>
+    </item>
+    
     <item>
       <title>Ulam Spiral</title>
       <link>/blog/ullam/</link>
