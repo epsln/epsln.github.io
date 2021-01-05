@@ -6,7 +6,17 @@
     <description>Recent content in math on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Dec 2020 18:54:18 +0100</lastBuildDate><atom:link href="/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Jan 2021 16:49:57 +0100</lastBuildDate><atom:link href="/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bifurcation Diagrams</title>
+      <link>/blog/biffmap/</link>
+      <pubDate>Tue, 05 Jan 2021 16:49:57 +0100</pubDate>
+      
+      <guid>/blog/biffmap/</guid>
+      <description>This time we&amp;rsquo;re gonna talk about things I know a little bit more about : bifurcation diagrams and iterated functions. The code is available here
+Bifurcation diagrams show the behavior of a function \( f: \mathbb{R} \rightarrow \mathbb{R} \), with a real parameter under iteration. Iteration simply means &amp;ldquo;plugging the output into the input&amp;rdquo;: a feedback if you will. Iterating from a &amp;ldquo;seed&amp;rdquo; \(p\), the function can converge to a value (i.</description>
+    </item>
+    
     <item>
       <title>Gaussians Primes</title>
       <link>/blog/gaussints/</link>
