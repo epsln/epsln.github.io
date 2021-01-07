@@ -6,7 +6,16 @@
     <description>Recent content in Blogs on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 Jan 2021 16:49:57 +0100</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Jan 2021 15:01:47 +0100</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chaos in Bits</title>
+      <link>/blog/chaosbits/</link>
+      <pubDate>Thu, 07 Jan 2021 15:01:47 +0100</pubDate>
+      
+      <guid>/blog/chaosbits/</guid>
+      <description>One of the things I try a lot is to make cool looking images with the least effort on my part. The easiest way to do that is to let the computer do my work. At least, that&amp;rsquo;s the theory; in practice I spend a lot of time tweaking the various functions and tidbits that make the final product. Maybe some day I&amp;rsquo;ll just paint the individual pixel myself, it&amp;rsquo;ll probably be a bit less trouble.</description>
+    </item>
+    
     <item>
       <title>Bifurcation Diagrams</title>
       <link>/blog/biffmap/</link>
