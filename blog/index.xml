@@ -6,7 +6,18 @@
     <description>Recent content in Blogs on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Jan 2021 00:13:28 +0100</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 21:27:34 +0100</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Devil&#39;s Staircase</title>
+      <link>/blog/devilstaircase/</link>
+      <pubDate>Mon, 11 Jan 2021 21:27:34 +0100</pubDate>
+      
+      <guid>/blog/devilstaircase/</guid>
+      <description>Today, just a quickie. The Devil&amp;rsquo;s Staircase (or Cantor Function) is a particular &amp;ldquo;pathological&amp;rdquo; function. It grows from 0 to 1 as \(x\) goes from 0 to 1, but it&amp;rsquo;s derivative are 0 almost everywhere. Meaning, that everywhere you zoom, you&amp;rsquo;ll get a flat line. Yet it goes up. Yet it&amp;rsquo;s flat almost everywhere ! Code? Here!.
+Here, we generate the Devil&amp;rsquo;s Staircase using a particular Circle Map
+$$\phi_{n+1} = \phi_n - \frac{K * sin(2 * \pi * phi_n)}{2 * \pi} $$</description>
+    </item>
+    
     <item>
       <title>Chaos in Logic</title>
       <link>/blog/chaoticlogic/</link>
