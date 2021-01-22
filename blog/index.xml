@@ -6,7 +6,17 @@
     <description>Recent content in Blogs on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Jan 2021 21:27:34 +0100</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jan 2021 16:21:39 +0100</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Complex Plots of Fixed Points of Iterated Polynomials</title>
+      <link>/blog/complesplots/</link>
+      <pubDate>Wed, 20 Jan 2021 16:21:39 +0100</pubDate>
+      
+      <guid>/blog/complesplots/</guid>
+      <description>A fairly long title for this one, but I can&amp;rsquo;t always be Victor Hugo when it comes to posts titles. We&amp;rsquo;re gonna talk about complex dynamics in this one, so stay strapped.
+When I first started learning about Discrete Dynamics, an exercise that would often come up would be to find the fixed point of the nth iteration of the logistic map, or put it simply solving the following equation:</description>
+    </item>
+    
     <item>
       <title>The Devil&#39;s Staircase</title>
       <link>/blog/devilstaircase/</link>
