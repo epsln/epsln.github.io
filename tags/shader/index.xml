@@ -6,7 +6,17 @@
     <description>Recent content in shader on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Jan 2021 00:13:28 +0100</lastBuildDate><atom:link href="/tags/shader/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Feb 2021 00:04:25 +0100</lastBuildDate><atom:link href="/tags/shader/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arnold and its Tongues</title>
+      <link>/blog/tongues/</link>
+      <pubDate>Tue, 16 Feb 2021 00:04:25 +0100</pubDate>
+      
+      <guid>/blog/tongues/</guid>
+      <description>Hi, I&amp;rsquo;m back. I have been working a lot on my Indra&amp;rsquo;s Pearl implementation, available here. I&amp;rsquo;ll write an article about it soon, since it&amp;rsquo;s pretty interesting, but not now. Now we&amp;rsquo;re talking about tongues. Code is available here
+The Arnold Tongue(s) are a particular kind of fractal that arises when we plot the rotation number of a particular circle map. Circle maps are functions from the circle to itself. They are particularly conducive to chaotic motions, and are pretty simple so it&amp;rsquo;s a good start.</description>
+    </item>
+    
     <item>
       <title>Chaos in Logic</title>
       <link>/blog/chaoticlogic/</link>
