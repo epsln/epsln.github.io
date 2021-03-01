@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on epsilon dumblog</title>
+    <link>/tags/c/</link>
+    <description>Recent content in C on epsilon dumblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Feb 2021 16:47:37 +0100</lastBuildDate><atom:link href="/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Indra&#39;s Pearl, or Quasifuschian Two Generator Groups explained by someone completely out of his depths</title>
+      <link>/blog/indraspearl_pt1/</link>
+      <pubDate>Thu, 18 Feb 2021 16:47:37 +0100</pubDate>
+      
+      <guid>/blog/indraspearl_pt1/</guid>
+      <description>A few months back I started reading Indra&amp;rsquo;s Pearl by Mumford, Series and Wright. The book is amazing, and I&amp;rsquo;m not scared to say it&amp;rsquo;s one of my favorite books about Maths that I&amp;rsquo;ve ever read. I wanted to get my hands dirty and implement some of the fractals in the book, since they were very different from the usual &amp;ldquo;Mandelbrot and cousins&amp;rdquo; fractals: they were truly out of this world.</description>
+    </item>
+    
+  </channel>
+</rss>
