@@ -6,7 +6,17 @@
     <description>Recent content on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Feb 2021 16:47:37 +0100</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Mar 2021 17:05:25 +0100</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Indras Pearl II: Generating the Generators</title>
+      <link>/blog/indraspearl_pt2/</link>
+      <pubDate>Mon, 01 Mar 2021 17:05:25 +0100</pubDate>
+      
+      <guid>/blog/indraspearl_pt2/</guid>
+      <description>This post is a part of a series where I try to explain my work on implementing methods from the book &amp;ldquo;Indra&amp;rsquo;s Pearl&amp;rdquo;, from Mumford, Series and Wright. In the first part I talked about the very basics. If you haven&amp;rsquo;t read it, I&amp;rsquo;d recommend it, simply because I really like it, and also because you might not understand what I&amp;rsquo;m talking about.
+In this post we&amp;rsquo;ll talk about how we chose the specific Möbius Transform that we&amp;rsquo;ll use for our exploration.</description>
+    </item>
+    
     <item>
       <title>Indra&#39;s Pearl, or Quasifuschian Two Generator Groups explained by someone completely out of his depths</title>
       <link>/blog/indraspearl_pt1/</link>
