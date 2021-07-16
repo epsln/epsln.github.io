@@ -6,7 +6,16 @@
     <description>Recent content in math on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Mar 2021 17:05:25 +0100</lastBuildDate><atom:link href="/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 May 2021 00:23:07 +0200</lastBuildDate><atom:link href="/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Indras Pearl III : Searching for a place to stop</title>
+      <link>/blog/indraspearl_pt3/</link>
+      <pubDate>Tue, 04 May 2021 00:23:07 +0200</pubDate>
+      
+      <guid>/blog/indraspearl_pt3/</guid>
+      <description>In the past article we&amp;rsquo;ve seen an overview of what kind of objects we were talking about, and how to create generators that would be interesting to explore. In this part, we&amp;rsquo;ll talk about the bread and butter of Indra&amp;rsquo;s Pearl, namely the Depth First Exploration Algorithm, or DFS. For the sake of simplicity, i&amp;rsquo;ll refer to the inverse of a generator using the uppercase version of it&amp;rsquo;s associated letter, so the inverse of a is A, and the inverse of b is B.</description>
+    </item>
+    
     <item>
       <title>Indras Pearl II: Generating the Generators</title>
       <link>/blog/indraspearl_pt2/</link>
