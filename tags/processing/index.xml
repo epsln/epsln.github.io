@@ -6,7 +6,17 @@
     <description>Recent content in processing on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Feb 2021 00:04:25 +0100</lastBuildDate><atom:link href="/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Mar 2023 16:29:08 +0100</lastBuildDate><atom:link href="/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Complex Bifurcation Diagrams and Hilbert Curves</title>
+      <link>/blog/complexbifmap/</link>
+      <pubDate>Mon, 13 Mar 2023 16:29:08 +0100</pubDate>
+      
+      <guid>/blog/complexbifmap/</guid>
+      <description>Bifurcation diagrams A bifurcation diagram is a pretty great way to observe the dynamics of a parametrized one dimensional map. On the x-axis, the parameter and on the y axis is shown the trajectory of the point after a few iteration (so that the system settle down into the attractor). For example, with the logistic map :
+$$x_{n+1} = r * x_{n} (1 - x_{n}), r, x_0 \in \mathbb[R] $$</description>
+    </item>
+    
     <item>
       <title>Arnold and its Tongues</title>
       <link>/blog/tongues/</link>

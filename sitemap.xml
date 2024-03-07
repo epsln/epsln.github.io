@@ -13,17 +13,37 @@
   </url>
   
   <url>
+    <loc>/tags/dynamical-systems/</loc>
+    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/</loc>
     <lastmod>2023-03-13T16:29:08+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/c/</loc>
-    <lastmod>2021-05-04T00:23:07+02:00</lastmod>
+    <loc>/tags/fractals/</loc>
+    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/fractals/</loc>
+    <loc>/tags/math/</loc>
+    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/processing/</loc>
+    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/c/</loc>
     <lastmod>2021-05-04T00:23:07+02:00</lastmod>
   </url>
   
@@ -43,16 +63,6 @@
   </url>
   
   <url>
-    <loc>/tags/math/</loc>
-    <lastmod>2021-05-04T00:23:07+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2021-05-04T00:23:07+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/indraspearl_pt2/</loc>
     <lastmod>2021-03-01T17:05:25+01:00</lastmod>
   </url>
@@ -64,11 +74,6 @@
   
   <url>
     <loc>/blog/tongues/</loc>
-    <lastmod>2021-02-16T00:04:25+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/processing/</loc>
     <lastmod>2021-02-16T00:04:25+01:00</lastmod>
   </url>
   
@@ -109,11 +114,6 @@
   
   <url>
     <loc>/blog/biffmap/</loc>
-    <lastmod>2021-01-05T16:49:57+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/dynamical-systems/</loc>
     <lastmod>2021-01-05T16:49:57+01:00</lastmod>
   </url>
   
