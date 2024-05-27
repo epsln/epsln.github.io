@@ -6,7 +6,18 @@
     <description>Recent content in Blogs on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Mar 2023 16:29:08 +0100</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 15:30:17 +0200</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buddhabrot, domain coloring, fractal flames and nevroses</title>
+      <link>/blog/buddhalog/</link>
+      <pubDate>Fri, 12 Apr 2024 15:30:17 +0200</pubDate>
+      
+      <guid>/blog/buddhalog/</guid>
+      <description>For the past year or so, I have been working on a buddhabrot using the lambda function, defined by
+$$ f_r(z) = r * z * (1 - z) $$
+With \(r, z \in \mathbb C\). The goal initially was to simply compute an image (which I will refer to by the Buddhalog from now on) using the Buddhabrot technique, created by Melinda Green. A buddhabrot is a way to show the trajectories of points under iteration of a map: it&amp;rsquo;s an histogram of trajectories.</description>
+    </item>
+    
     <item>
       <title>Complex Bifurcation Diagrams and Hilbert Curves</title>
       <link>/blog/complexbifmap/</link>
