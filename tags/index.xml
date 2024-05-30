@@ -6,13 +6,40 @@
     <description>Recent content in Tags on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Mar 2023 16:29:08 +0100</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 15:30:17 +0200</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>dynamical systems</title>
       <link>/tags/dynamical-systems/</link>
-      <pubDate>Mon, 13 Mar 2023 16:29:08 +0100</pubDate>
+      <pubDate>Fri, 12 Apr 2024 15:30:17 +0200</pubDate>
       
       <guid>/tags/dynamical-systems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fractal</title>
+      <link>/tags/fractal/</link>
+      <pubDate>Fri, 12 Apr 2024 15:30:17 +0200</pubDate>
+      
+      <guid>/tags/fractal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>math</title>
+      <link>/tags/math/</link>
+      <pubDate>Fri, 12 Apr 2024 15:30:17 +0200</pubDate>
+      
+      <guid>/tags/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>processing</title>
+      <link>/tags/processing/</link>
+      <pubDate>Fri, 12 Apr 2024 15:30:17 +0200</pubDate>
+      
+      <guid>/tags/processing/</guid>
       <description></description>
     </item>
     
@@ -22,24 +49,6 @@
       <pubDate>Mon, 13 Mar 2023 16:29:08 +0100</pubDate>
       
       <guid>/tags/fractals/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>math</title>
-      <link>/tags/math/</link>
-      <pubDate>Mon, 13 Mar 2023 16:29:08 +0100</pubDate>
-      
-      <guid>/tags/math/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>processing</title>
-      <link>/tags/processing/</link>
-      <pubDate>Mon, 13 Mar 2023 16:29:08 +0100</pubDate>
-      
-      <guid>/tags/processing/</guid>
       <description></description>
     </item>
     

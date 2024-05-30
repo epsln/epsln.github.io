@@ -13,7 +13,32 @@
   </url>
   
   <url>
+    <loc>/tags/dynamical-systems/</loc>
+    <lastmod>2024-04-12T15:30:17+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/</loc>
+    <lastmod>2024-04-12T15:30:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/fractal/</loc>
+    <lastmod>2024-04-12T15:30:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/math/</loc>
+    <lastmod>2024-04-12T15:30:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/processing/</loc>
+    <lastmod>2024-04-12T15:30:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <lastmod>2024-04-12T15:30:17+02:00</lastmod>
   </url>
   
@@ -23,27 +48,7 @@
   </url>
   
   <url>
-    <loc>/tags/dynamical-systems/</loc>
-    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/fractals/</loc>
-    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/math/</loc>
-    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/processing/</loc>
-    <lastmod>2023-03-13T16:29:08+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2023-03-13T16:29:08+01:00</lastmod>
   </url>
   
@@ -90,6 +95,11 @@
   <url>
     <loc>/blog/complesplots/</loc>
     <lastmod>2021-01-20T16:21:39+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/blancmange/</loc>
+    <lastmod>2021-01-14T16:16:35+01:00</lastmod>
   </url>
   
   <url>

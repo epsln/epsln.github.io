@@ -72,34 +72,63 @@
 <main id="main">
             <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
             <div class="content">
-    
-    <h1 id="title">The Devil&#39;s Staircase</h1>
-    
-      
-    <nav id="TableOfContents"></nav>
-    <p>Today, just a quickie. The Devil&rsquo;s Staircase (or Cantor Function) is a particular &ldquo;pathological&rdquo; function. It grows from 0 to 1 as \(x\) goes from 0 to 1, but it&rsquo;s derivative are 0 almost everywhere. Meaning, that everywhere you zoom, you&rsquo;ll get a flat line. Yet it goes up. Yet it&rsquo;s flat almost everywhere ! Code? <a href="https://github.com/epsln/processingSketches/tree/main/devilStaircase">Here!</a>.</p>
-<p><img src="/devilStaircase/devil.gif" alt="Wow, it even wiggles !"></p>
-<p>Here, we generate the Devil&rsquo;s Staircase using a particular Circle Map</p>
-<p>$$\phi_{n+1} = \phi_n - \frac{K * sin(2 * \pi * phi_n)}{2 * \pi} $$</p>
-<p>Using \(K = 1\) this map converge to the Cantor Function as \(n \rightarrow \infty\). This is why it wiggles a bit.</p>
-<p>For fun, I used varying values of K to see what kind of effects it would have. It tends towards the Cantor Function, then goes all weird.</p>
-<p><img src="/devilStaircase/weird.gif" alt="Weird."></p>
-
-    
-    <div class="nav-next-prev">
-        <div class="nav-prev">
-            
-                <a href="/blog/chaoticlogic/"><i class="fas fa-chevron-left"></i></a>
-            
-        </div>
-        <a class="nav-top" href="#">top</i></a>
-        <div class="nav-next">
-            
-                <a href="/blog/blancmange/"><i class="fas fa-chevron-right"></i></a>
-            
-        </div>
+    <div class="section">
+        <dev class="section-title">tags</dev>
+        
+            <div class="list-item">
+                <a class="entry-title" href="/blog/gaussints/">Gaussians Primes</a>
+                
+                
+                <div class="meta">
+                
+                    <i class="far fa-calendar-alt"></i> Dec 29 2020
+                
+                <br>
+                
+                        <i class="fas fa-tags"></i> 
+                        Tags: processing, primes, math
+                
+                </div>
+            </div>
+        
+            <div class="list-item">
+                <a class="entry-title" href="/blog/ullam/">Ulam Spiral</a>
+                
+                
+                <div class="meta">
+                
+                    <i class="far fa-calendar-alt"></i> Dec 28 2020
+                
+                <br>
+                
+                        <i class="fas fa-tags"></i> 
+                        Tags: processing, primes, math
+                
+                </div>
+            </div>
+        
     </div>
     
+
+<ul class="pagination">
+  
+  <li class="page-item">
+    <a class="page-link" href="/tags/math/">
+      <i class="fas fa-chevron-left"></i>
+    </a>
+  </li>
+  
+  
+  <li class="page-item">
+    <a class="grayed-out" href="javascript:void()">
+      <i class="fas fa-chevron-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+
 
             </div><footer>
 <div class="footer-content">

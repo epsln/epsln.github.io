@@ -6,7 +6,18 @@
     <description>Recent content in processing on epsilon dumblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Mar 2023 16:29:08 +0100</lastBuildDate><atom:link href="/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 15:30:17 +0200</lastBuildDate><atom:link href="/tags/processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buddhabrot, domain coloring, fractal flames and nevroses</title>
+      <link>/blog/buddhalog/</link>
+      <pubDate>Fri, 12 Apr 2024 15:30:17 +0200</pubDate>
+      
+      <guid>/blog/buddhalog/</guid>
+      <description>For the past year or so, I have been working on a buddhabrot using the lambda function, defined by
+$$ f_r(z) = r * z * (1 - z) $$
+With \(r, z \in \mathbb C\). The goal initially was to simply compute an image (which I will refer to by the Buddhalog from now on) using the Buddhabrot technique, created by Melinda Green. A buddhabrot is a way to show the trajectories of points under iteration of a map: it&amp;rsquo;s an histogram of trajectories.</description>
+    </item>
+    
     <item>
       <title>Complex Bifurcation Diagrams and Hilbert Curves</title>
       <link>/blog/complexbifmap/</link>
@@ -25,6 +36,16 @@ $$x_{n+1} = r * x_{n} (1 - x_{n}), r, x_0 \in \mathbb[R] $$</description>
       <guid>/blog/tongues/</guid>
       <description>Hi, I&amp;rsquo;m back. I have been working a lot on my Indra&amp;rsquo;s Pearl implementation, available here. I&amp;rsquo;ll write an article about it soon, since it&amp;rsquo;s pretty interesting, but not now. Now we&amp;rsquo;re talking about tongues. Code is available here
 The Arnold Tongue(s) are a particular kind of fractal that arises when we plot the rotation number of a particular circle map. Circle maps are functions from the circle to itself. They are particularly conducive to chaotic motions, and are pretty simple so it&amp;rsquo;s a good start.</description>
+    </item>
+    
+    <item>
+      <title>Blancmange</title>
+      <link>/blog/blancmange/</link>
+      <pubDate>Thu, 14 Jan 2021 16:16:35 +0100</pubDate>
+      
+      <guid>/blog/blancmange/</guid>
+      <description>Another short and sweet post on some pathological curve that I spent a good afternoon coding back in 2018. It&amp;rsquo;s called a &amp;ldquo;Blancmange curve&amp;rdquo; apparently in relation to some french cake. Well I&amp;rsquo;m French and I don&amp;rsquo;t think I&amp;rsquo;ve ever eaten any self similar cakes. Doesn&amp;rsquo;t sounds that good actually.Cake or not, the code is available here.
+Anyway, this curve is defined as an infinite sum of smaller and smaller triangle waves.</description>
     </item>
     
     <item>

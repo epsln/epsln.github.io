@@ -73,29 +73,33 @@
             <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
             <div class="content">
     
-    <h1 id="title">The Devil&#39;s Staircase</h1>
+    <h1 id="title">Blancmange</h1>
     
       
     <nav id="TableOfContents"></nav>
-    <p>Today, just a quickie. The Devil&rsquo;s Staircase (or Cantor Function) is a particular &ldquo;pathological&rdquo; function. It grows from 0 to 1 as \(x\) goes from 0 to 1, but it&rsquo;s derivative are 0 almost everywhere. Meaning, that everywhere you zoom, you&rsquo;ll get a flat line. Yet it goes up. Yet it&rsquo;s flat almost everywhere ! Code? <a href="https://github.com/epsln/processingSketches/tree/main/devilStaircase">Here!</a>.</p>
-<p><img src="/devilStaircase/devil.gif" alt="Wow, it even wiggles !"></p>
-<p>Here, we generate the Devil&rsquo;s Staircase using a particular Circle Map</p>
-<p>$$\phi_{n+1} = \phi_n - \frac{K * sin(2 * \pi * phi_n)}{2 * \pi} $$</p>
-<p>Using \(K = 1\) this map converge to the Cantor Function as \(n \rightarrow \infty\). This is why it wiggles a bit.</p>
-<p>For fun, I used varying values of K to see what kind of effects it would have. It tends towards the Cantor Function, then goes all weird.</p>
-<p><img src="/devilStaircase/weird.gif" alt="Weird."></p>
+    <p>Another short and sweet post on some pathological curve that I spent a good afternoon coding back in 2018. It&rsquo;s called a &ldquo;Blancmange curve&rdquo; apparently in relation to some french cake. Well I&rsquo;m French and I don&rsquo;t think I&rsquo;ve ever eaten any self similar cakes. Doesn&rsquo;t sounds that good actually.<a href="https://github.com/epsln/processingSketches">Cake or not, the code is available here</a>.</p>
+<p>Anyway, this curve is defined as an infinite sum of smaller and smaller triangle waves. The amplitude and period of each wave is two time smaller than the previous. It&rsquo;s fairly easy to draw (and to describe). Funnily enough I though this curve was nowhere differentiable, like the Weierstrass function, but turns out this one is, but only at points  \(x \in \mathbb{R}\) where \(x\) is not a dyadic rational <em>i.e.</em>, numbers who cannot be expressed in the form \(\frac{a}{2^b}\). Armed with this knowledge, we shall move forward with our lives. The function is defined as follows:</p>
+<p>$$ \sum_{n=0}^\infty \frac{s(2^n x)}{2^n} $$</p>
+<p>With \(s(x)\) being the Triangle function, which returns the distance to the closest integer.</p>
+<p><img src="/blancmange/blancmange.gif" alt="Wow, it DOES look like a cake, said no one"></p>
+<p>The Blancmange function can also be (slightly) generalized in the form of the Takagi-Landsberg curve.</p>
+<p>Keeping the previous iterations on the screen gives us a look at how those curves add up.</p>
+<p><img src="/blancmange/blancmangeBack.gif" alt="Spikey"></p>
+<p>$$T_w(x) = \sum_{n=0}^\infty w^n s(2^n x) $$</p>
+<p>Using \(w = 1/2\), you get the Blancmange curve. I&rsquo;ve plotted a few values of w, ranging from 0 to 2 below, for your viewing pleasure. It does breakdown with \(w &gt; 2/3\) and get quite big, but it still looks neat.</p>
+<p><img src="/blancmange/wParam.gif" alt="Cake."></p>
 
     
     <div class="nav-next-prev">
         <div class="nav-prev">
             
-                <a href="/blog/chaoticlogic/"><i class="fas fa-chevron-left"></i></a>
+                <a href="/blog/devilstaircase/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
         <a class="nav-top" href="#">top</i></a>
         <div class="nav-next">
             
-                <a href="/blog/blancmange/"><i class="fas fa-chevron-right"></i></a>
+                <a href="/blog/complesplots/"><i class="fas fa-chevron-right"></i></a>
             
         </div>
     </div>

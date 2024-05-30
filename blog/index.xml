@@ -77,6 +77,16 @@ When I first started learning about Discrete Dynamics, an exercise that would of
     </item>
     
     <item>
+      <title>Blancmange</title>
+      <link>/blog/blancmange/</link>
+      <pubDate>Thu, 14 Jan 2021 16:16:35 +0100</pubDate>
+      
+      <guid>/blog/blancmange/</guid>
+      <description>Another short and sweet post on some pathological curve that I spent a good afternoon coding back in 2018. It&amp;rsquo;s called a &amp;ldquo;Blancmange curve&amp;rdquo; apparently in relation to some french cake. Well I&amp;rsquo;m French and I don&amp;rsquo;t think I&amp;rsquo;ve ever eaten any self similar cakes. Doesn&amp;rsquo;t sounds that good actually.Cake or not, the code is available here.
+Anyway, this curve is defined as an infinite sum of smaller and smaller triangle waves.</description>
+    </item>
+    
+    <item>
       <title>The Devil&#39;s Staircase</title>
       <link>/blog/devilstaircase/</link>
       <pubDate>Mon, 11 Jan 2021 21:27:34 +0100</pubDate>
@@ -144,7 +154,7 @@ Creating this sort of image is very simple. I simply created a basic loop that c
       
       <guid>/blog/intro/</guid>
       <description>Hi. I&amp;rsquo;m Epsilon, and this is a blog.
-I&amp;rsquo;m a Computer Engineer, specialised in Machine Learning and Computer Vision. Most of my research works centers around automated detection in Archaeology. I have introduced the use of YOLO in LiDAR detection for this purpose, in a research internship at the University of Leiden. I have also worked in rare event detection in train borne systems at the SNCF. I am currently available for hire.</description>
+I&amp;rsquo;m a Computer Engineer, specialised in Machine Learning and Computer Vision. Most of my research works centers around automated detection in Archaeology. I have introduced the use of YOLO in LiDAR detection for this purpose, in a research internship at the University of Leiden. I have also worked in rare event detection in train borne systems at the SNCF-CIM. I also have quite the experience in social media intelligence, i.</description>
     </item>
     
   </channel>
