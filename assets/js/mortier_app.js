@@ -24,7 +24,7 @@ document.getElementById("generate").onclick = () => {
   const cross_hatch   = document.getElementById("crosshatch").value;
   const hatch_spacing = parseInt(document.getElementById("hatch-spacing").value);
   // fetch API...
-	fetch("https://mortier-api.onrender.com/tiling", {
+	fetch("https://mortier.planch.es/tiling", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		//body: JSON.stringify({size: [clientWidth, clientHeight], 
