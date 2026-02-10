@@ -1,0 +1,16 @@
+{{ define "main" -}}
+<div class="app" id = "app">
+  {{ partial "post/info.html" . }}
+  {{ .Content }}
+  {{ if (.Site.Params.listmonk) }}
+    {{ partial "post/listmonk_email_newsletters.html" . }}
+  {{ end }}
+  {{ if or (.Site.Params.remark42) (.Site.Config.Services.Disqus.Shortname) }}
+    {{ partial "post/comments.html" . }}
+  {{ end }}
+</div>
+{{ $script := resources.Get "js/mortier_app.js" | minify }}
+		<script src="{{ $script.Permalink }}" media="screen"></script>
+{{ $styles := resources.Get "css/main.css" | minify }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+{{- end }}

@@ -1,0 +1,199 @@
+<aside class="sidebar">
+    <div class="container sidebar-sticky">
+        {{ partial "light_dark.html" . }}
+        {{ partial "sidebar/title.html" . }}
+        {{ partial "sidebar/socials.html" . }}
+
+<aside id="sidenav">
+    <header>
+    {{if eq .Site.Params.useAvatar true}}
+        <a href={{ "" | absURL }}><img src="{{ "avatar.png" | absURL }}" alt="avatar"></a>
+        
+    {{end}}
+
+    <a id="branding" href={{ "" | absURL }}>
+        {{with .Site.Params.logo}}
+            {{ . | safeHTML }}
+        {{else}}
+            {{ .Site.Title }}
+        {{end}}
+    </a>
+    </header>
+
+		 {{ if ne .Type "mortier" }}
+    <nav>
+        {{ range .Site.Menus.main }}
+            {{ $url := urls.Parse .URL }}		
+            <a href="{{ $url }}"
+                {{ if ne $url.Host ""}}
+                    target="_blank"
+                {{end}}
+            >
+                {{ .Pre }}
+                <span>{{ .Name }}</span>
+            </a>
+        {{end}}
+    </nav>
+		{{ end }} 
+		  {{ if eq .Type "mortier" }}
+  <section class="aside-section">
+    <h3>Mortier Parameters</h3>
+		<br>
+				<div id="outer">
+		<div id="inner">
+    <button id="generate">Generate !</button>
+		</div>
+		</div>
+		<br>
+		<label>
+      Tesselation Type 
+			<select name="Tesselation" id="tess-type">
+			<option value="">--Please choose an option--</option>
+			<option value="regular">Regular</option>
+			<option value="hyperbolic">Hyperbolic</option>
+			<option value="penrose">Penrose</option>
+		</select>
+    </label>
+		<br>
+    <label>
+			Scale<br>
+      <input type="range"
+             id="scale"
+             min="5"
+             max="40"
+             step="5"
+             value="1">
+    </label>
+		<br>
+    <label>
+			Angle<br>
+      <input type="range"
+             id="angle"
+             min="0"
+             max="1.57"
+						 step = 0.01
+             value="0">
+    </label>
+
+		<div class="param" data-show-tess-type="regular">
+			Tesselation ID<br>
+			<select name="Tesselation ID" id="tess-id">
+			<option value="random">Random</option>
+			<option value="t3003">t3003</option>
+			<option value="t3001">t3001</option>
+		</select>
+		</div>
+
+		<div class="param" data-show-tess-type="hyperbolic">
+		<label>
+			Number of Sides 
+      <input type="range"
+             id="p"
+             min=3
+             max=10
+						 step = 1
+						 value=4><br>
+		</label>
+		</div>
+
+		<div class="param" data-show-tess-type="hyperbolic">
+		<label>
+			Number of Neighbors
+      <input type="range"
+             id="q"
+             min=3
+             max=10
+						 step = 1
+             value=4>
+		</label>
+		</div>
+		<div class="param" data-show-tess-type="hyperbolic">
+		<label>
+			Depth<br>
+      <input type="range"
+             id="depth"
+             min=3
+             max=5
+						 step = 1
+             value=4>
+		</label>
+		</div>
+		<div class="param" data-show-tess-type="hyperbolic">
+		<label>
+			Refinement iterations	
+      <input type="range"
+             id="refinements"
+             min=0
+             max=3
+						 step = 1
+             value=0>
+		</label>
+		</div>
+		<div class="param" data-show-tess-type="hyperbolic">
+		  <label for="half-plane">Half Plane Transform</label>
+		  <input type="checkbox" name="half-plane" id="half-plane" />
+		</div>
+		<div>
+		<label>
+			Parametrisation<br>	
+			<select name="parametrisation" id="parametrisation">
+			<option value="none">None</option>
+			<option value="perlin">Perlin Noise</option>
+			<option value="simplex">Simplex Noise</option>
+		</select>
+		</label>
+		</div>
+		<div>
+		<label>
+			Ornements	<br>
+			<select name="ornements" id="ornements">
+			<option value="none">None</option>
+			<option value="bands">Bands</option>
+			<option value="laces">Laces</option>
+			</select>
+		</label>
+		</div>
+		<div class="param" data-show-ornements="bands,laces">
+		<label>
+			Bands Width<br>
+      <input type="range"
+             id="bands-width"
+             min=1
+             max=4
+						 step = .1
+             value=.1>
+		</label>
+		</div>
+		<div>
+		<label>
+			Hatch Fill<br>
+			<select name="hatching" id="hatching">
+			<option value="none">None</option>
+			<option value="line">Line</option>
+			<option value="dots">Dots</option>
+			</select>
+		</label>
+		</div>
+		<div class="param" data-show-hatching="line,dots">
+		<label>
+			Hatch Spacing<br>
+      <input type="range"
+             id="hatch-spacing"
+             min=2
+             max=20
+						 step = 1
+             value=4>
+		</label>
+		</div>
+		<div class="param" data-show-hatching="line,dots">
+		  <label for="crosshatch">Crosshatch</label>
+		  <input type="checkbox" name="crosshatch" id="crosshatch" />
+		</div>
+  </section>
+  {{ end }}
+</aside>
+        {{ partial "sidebar/copyright.html" . }}
+  </div>
+</aside>
+{{ $styles := resources.Get "css/sidebar.css" | minify }}
+<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
