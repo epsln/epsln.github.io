@@ -12,22 +12,22 @@ In this post we'll talk about how we chose the specific Möbius Transform that w
 
 ![Looking good but pretty undefined](/indras2/nuage.png)
 
-The image above shows a completely randomised group, with parameters whose real part is in \\([-2; 2]\\), and whose imaginary part is in \\([-2i; 2i]\\)
+The image above shows a completely randomised group, with parameters whose real part is in $[-2; 2]$, and whose imaginary part is in $[-2i; 2i]$
 
 ## Parametrised Schottky Groups
 Those groups are fairly easy to understand. To have a (Pseudo)Fuschian group, we have to have initial Schottky circles who are tangent. If the circles intersect, we'll have some nasty outputs, and if they don't touch, our limit set will be disconnected. 
 
 Our first group is the :
-## \\(\theta\\)-Schottky Group 
-We have already seen this group in the last post. The initial circles are placed on a square. Their position and size depends only on one parameter, \\(\theta\\).
+## $\theta$-Schottky Group 
+We have already seen this group in the last post. The initial circles are placed on a square. Their position and size depends only on one parameter, $\theta$.
 
 ## Grandma Recipes
-A very (very) handy recipe to have on hand in the Grandma Recipe. This one reduce the number of degree of freedom from 16 to only 2. It comes with a bunch of very nice symmetries and is normalized, so that the determinant of all matrices are equal to 1. The only parameters we actually need are the two traces of the generators \\(a\\) and \\(b\\), and grandma will fill out the rest. Grandma also set up her recipe so that the trace of the matrix \\(abAB\\) is equal to -2.
+A very (very) handy recipe to have on hand in the Grandma Recipe. This one reduce the number of degree of freedom from 16 to only 2. It comes with a bunch of very nice symmetries and is normalized, so that the determinant of all matrices are equal to 1. The only parameters we actually need are the two traces of the generators $a$ and $b$, and grandma will fill out the rest. Grandma also set up her recipe so that the trace of the matrix $abAB$ is equal to -2.
 
 Here's her recipe:
-1. Chose two complex numbers, \\(t\_a, t\_b\\)
-2. Chose one of the solutions to the equation: \\(x^2 - t\_a t\_b x + t\_a^2 + t\_b^2 = 0\\), and set \\(t\_{ab} = x\\) 
-3. Compute \\(z\_0 = \frac{(t\_{ab} - 2)t\_b}{t\_b t\_{ab} - 2 t\_a + 2 i t\_{ab}}\\)
+1. Chose two complex numbers, $t\_a, t\_b$
+2. Chose one of the solutions to the equation: $x^2 - t\_a t\_b x + t\_a^2 + t\_b^2 = 0$, and set $t\_{ab} = x$ 
+3. Compute $z\_0 = \frac{(t\_{ab} - 2)t\_b}{t\_b t\_{ab} - 2 t\_a + 2 i t\_{ab}}$
 4. Simply compute the generator matrixes: 
 
 $$
@@ -44,7 +44,7 @@ b = \begin{pmatrix}
 $$
 
 ## Maskit's Cooking Show
-Maskit Parametrization further reduces the number of parameter to only one: \\(t\_a\\). This parametrization produces parabolic commutators and interesting looking fractals. The generator are as follows:
+Maskit Parametrization further reduces the number of parameter to only one: $t\_a$. This parametrization produces parabolic commutators and interesting looking fractals. The generator are as follows:
 
 $$
 b(z) = z + 2
@@ -54,6 +54,6 @@ $$
 a(z) = \mu + 1/z
 $$
 
-Where \\(\mu = t\_a/i\\).
+Where $\mu = t\_a/i$.
 
 There are other parametrisation, but those are the one which are implemented in Ceendra's Pearl. 

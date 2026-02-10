@@ -15,29 +15,29 @@ The author first uses the "Simple Liar" as an example, i.e:
 
 $$P: \text{This Sentence is False}$$
 
-Using standard logic, starting from the assumption that \\(P\\) is True, then \\(P\\) must be False, then True, then... Or just (1,0,1,0...). We can model the behavior of the "Simple Liar" using the following function : 
+Using standard logic, starting from the assumption that $P$ is True, then $P$ must be False, then True, then... Or just (1,0,1,0...). We can model the behavior of the "Simple Liar" using the following function : 
 
 $$x\_{n+1} = 1 - x\_n$$
 
-Analysis will show that this dynamical systems contains a period two fixed point, _i.e_ it never settles on a truth value. This is true for all starting value of \\(x \in [0;1]\\) (except 0.5): it's an attractive cycle. 
+Analysis will show that this dynamical systems contains a period two fixed point, _i.e_ it never settles on a truth value. This is true for all starting value of $x \in [0;1]$ (except 0.5): it's an attractive cycle. 
 
-Remind yourself that you don't have to only use 1 and 0: you can use every real in between ! So if you use a "confidence level" of 0.7 on this proposition, you will get 0.3 as your confidence level on this proposition. Doing this again will create a cycle : \\(0.7, 0.3, 0.7...\\). There is a fixed point actually: 0.5. If you "ain't so sure it's true, but ain't so sure it isn't", being very precisely "so-so" on this proposition, then you always get 0.5, because \\(1 - 0.5 = 0.5\\).
+Remind yourself that you don't have to only use 1 and 0: you can use every real in between ! So if you use a "confidence level" of 0.7 on this proposition, you will get 0.3 as your confidence level on this proposition. Doing this again will create a cycle : $0.7, 0.3, 0.7...$. There is a fixed point actually: 0.5. If you "ain't so sure it's true, but ain't so sure it isn't", being very precisely "so-so" on this proposition, then you always get 0.5, because $1 - 0.5 = 0.5$.
 
 A variation can be done using two propositions: the Dualist.
 
 $$X: X\text{ is True to half the extent that } Y \text{ is True}$$
 $$Y: Y\text{ is True to the extent that } X \text{ is False}$$
 
-Transforming this into function form we get a function mapping \\(\mathbb{R}^2\\) to  \\(\mathbb{R}^2\\) (because we have two inputs, X and Y):
+Transforming this into function form we get a function mapping $\mathbb{R}^2$ to  $\mathbb{R}^2$ (because we have two inputs, X and Y):
 
 $$x\_{n+1} = 1 - abs(0.5 * y\_{n+1} - x\_{n})$$
 $$y\_{n+1} = 1 - abs((1 - x\_{n+1}) - y\_n)$$
 
-Now, we can use our traditional tool for looking at those kind of dynamical systems: the standard escape time diagram, from Mandelbrot _et al._ fame. For all points \\(p \in \mathbb{R}^2\\), iterate using our function system using \\(p\\) as a starting point, and color the point based on the number of iterations until it exploded into infinity. Since we don't have the kind of patience to iterate an countably infinite number of time for a uncountably infinite number of points, we'll just do that for every pixel, and iterate something like ten times. Sorry, **all computer scientist are ultra finitists in pratice**.
+Now, we can use our traditional tool for looking at those kind of dynamical systems: the standard escape time diagram, from Mandelbrot _et al._ fame. For all points $p \in \mathbb{R}^2$, iterate using our function system using $p$ as a starting point, and color the point based on the number of iterations until it exploded into infinity. Since we don't have the kind of patience to iterate an countably infinite number of time for a uncountably infinite number of points, we'll just do that for every pixel, and iterate something like ten times. Sorry, **all computer scientist are ultra finitists in pratice**.
 
 ![At least we get good pictures out of all this work !](/chaoticLogic/dualist.jpg)
 
-Nice ! Darker shades of gray indicates starting values of \\(X, Y\\) that diverges very quickly. Whiter pixels indicates values that go into cycles or just converge to some fixed point.
+Nice ! Darker shades of gray indicates starting values of $X, Y$ that diverges very quickly. Whiter pixels indicates values that go into cycles or just converge to some fixed point.
 
 A variation on this could be. 
 
