@@ -113,7 +113,7 @@ button.addEventListener("click", async () => {
 //	fetch("https://mortier.planch.es/tiling", {
 	  try { 
 	//	const response = await fetch("http://localhost:8000/tiling", {
-		const response = await fetch("https://mortier-api.onrender/tiling", {
+		const response = await fetch("https://mortier-api.onrender.com/tiling", {
 														method: "POST",
 														headers: { "Content-Type": "application/json" , "Accept-Encoding": "gzip"},
 														//body: JSON.stringify({size: [clientWidth, clientHeight], 
