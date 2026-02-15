@@ -57,7 +57,11 @@ button.addEventListener("click", async () => {
 
 	var clientHeight = Math.round(document.getElementById('app').offsetHeight/2);
 	var clientWidth  = Math.round(document.getElementById('app').offsetWidth/2);
-	console.log(clientWidth, clientHeight)
+	const div = document.getElementById("app");
+	const rect = div.getBoundingClientRect();
+	const widthPx = Math.round((rect.width - 1)* 25.4/96);
+	const heightPx = Math.round((rect.height - 7)* 25.4/96);
+	console.log(widthPx, heightPx, rect.width, rect.height)
   const tess_type = document.getElementById("tess-type").value;
   var tess_id   = document.getElementById("tess-id").value;
   const scale     = parseInt(document.getElementById("scale").value);
@@ -112,15 +116,12 @@ button.addEventListener("click", async () => {
   // fetch API...
 //	fetch("https://mortier.planch.es/tiling", {
 	  try { 
-	//	const response = await fetch("http://localhost:8000/tiling", {
 		const response = await fetch("https://mortier-api.onrender.com/tiling", {
 														method: "POST",
 														headers: { "Content-Type": "application/json" , "Accept-Encoding": "gzip"},
-														//body: JSON.stringify({size: [clientWidth, clientHeight], 
-														//											 scale: scale, angle: angle})})
 
 														body: JSON.stringify({tess_type: tess_type, tess_id: tess_id,
-																									size: [clientWidth, clientHeight], 
+																									size: [widthPx, heightPx], 
 																									scale: scale, angle: angle,
 																									n_sides: n_sides, n_neigh: n_neigh, depth: depth, refinements: ref_itr, half_plane: half_p,
 																									angle_parametrisation: angle_param,
@@ -130,9 +131,6 @@ button.addEventListener("click", async () => {
 																									color_line: [color_line[0], color_line[1], color_line[2]] 
 																										})
 														});
-//		.then(r => r.text())
-//		.then(svg => {
-//			container.innerHTML = svg;
 		const svg = await response.text();
 		container.innerHTML = svg;
 		} catch (error) {

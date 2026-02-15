@@ -1,6 +1,5 @@
 {{ define "main" -}}
 <div class="app" id = "app">
-  {{ partial "post/info.html" . }}
   {{ .Content }}
   {{ if (.Site.Params.listmonk) }}
     {{ partial "post/listmonk_email_newsletters.html" . }}
