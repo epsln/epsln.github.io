@@ -112,18 +112,41 @@ button.addEventListener("click", async () => {
 		width: width 
 		};
 	}
-	
+
+	if (tess_type == "regular"){
+		tess_parameters = {"type": tess_type,
+											 "tess_id": tess_id
+		};
+	}
+
+	if (tess_type == "hyperbolic"){
+		tess_parameters = {"type": tess_type,
+											 "n_sides": n_sides, 
+											 "n_neigh": n_neigh, 
+											 "depth": depth, 
+											 "half_plane": half_p, 
+											 "refinements": ref_itr
+		};
+	}
+
+	if (tess_type == "penrose"){
+		tess_parameters = {"type": tess_type,
+											 "tile": tile, 
+											 "depth": depth, 
+		};
+	}
+
   // fetch API...
 //	fetch("https://mortier.planch.es/tiling", {
 	  try { 
 		const response = await fetch("https://mortier-api.onrender.com/tiling", {
+		//const response = await fetch("http://localhost:8000/tiling", {
 														method: "POST",
 														headers: { "Content-Type": "application/json" , "Accept-Encoding": "gzip"},
 
-														body: JSON.stringify({tess_type: tess_type, tess_id: tess_id,
+														body: JSON.stringify({tess_parameters: tess_parameters,
 																									size: [widthPx, heightPx], 
 																									scale: scale, angle: angle,
-																									n_sides: n_sides, n_neigh: n_neigh, depth: depth, refinements: ref_itr, half_plane: half_p,
 																									angle_parametrisation: angle_param,
 																									ornements: ornements,
 																									hatching: hatching,
