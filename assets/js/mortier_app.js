@@ -55,13 +55,16 @@ button.addEventListener("click", async () => {
 	if (button.disabled) return; // extra safety
   button.disabled = true;
 
-	var clientHeight = Math.round(document.getElementById('app').offsetHeight/2);
-	var clientWidth  = Math.round(document.getElementById('app').offsetWidth/2);
 	const div = document.getElementById("app");
 	const rect = div.getBoundingClientRect();
-	const widthPx = Math.round((rect.width - 1)* 25.4/96);
-	const heightPx = Math.round((rect.height - 7)* 25.4/96);
-	console.log(widthPx, heightPx, rect.width, rect.height)
+
+	const isMobile = window.innerWidth <= 768;
+
+	const widthPx  = Math.round((isMobile ? window.innerWidth  : rect.width  - 1) * 25.4 / 96);
+	const heightPx = Math.round((isMobile ? window.innerHeight * 0.8 : rect.height - 7) * 25.4 / 96);
+	const sidebar = document.querySelector('.sidebar');
+	const svgContainer = document.getElementById("svg-container");
+
   const tess_type = document.getElementById("tess-type").value;
   var tess_id   = document.getElementById("tess-id").value;
   const scale     = parseInt(document.getElementById("scale").value);

@@ -3,7 +3,12 @@
         {{ partial "light_dark.html" . }}
         {{ partial "sidebar/title.html" . }}
         {{ partial "sidebar/socials.html" . }}
-
+{{ if eq .Type "mortier" }}
+<button id="sidebar-toggle" onclick="
+  document.getElementById('sidenav').classList.toggle('open');
+  this.textContent = this.textContent.includes('▲') ? '▼ Show Parameters' : '▲ Hide Parameters';
+">▼ Show Parameters</button>
+{{ end }}
 <aside id="sidenav">
     <header>
     {{if eq .Site.Params.useAvatar true}}
@@ -1672,12 +1677,12 @@
 						 step = 1
              value=4>
 		</div>
-		<div class="param" data-show-tess-type="hyperbolic">
+		<div class="param" data-show-tess-type="hyperbolic,penrose">
 			Depth<br>
       <input type="range"
              id="depth"
              min=3
-             max=5
+             max=7
 						 step = 1
              value=4>
 		</div>

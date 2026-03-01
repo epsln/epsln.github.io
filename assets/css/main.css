@@ -357,3 +357,96 @@ div.highlight pre {
 .current {
     color: var(--text-color);
 }
+
+/* ── Responsive: mobile-first additions ── */
+
+/* Hamburger toggle button – hidden on desktop */
+#sidebar-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+	  main.content {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  /* Stack layout vertically instead of side-by-side */
+  .page-with-sidebar {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Sidebar becomes a slide-down panel */
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color, #ddd);
+    padding: 0.75rem;
+		height: auto;
+    box-sizing: border-box;
+  }
+
+  /* Collapse the sidebar content by default */
+  #sidenav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  /* When open, expand it */
+  #sidenav.open {
+    max-height: 9999px; /* large enough for all content */
+  }
+
+  /* Show the toggle button */
+  #sidebar-toggle {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    padding: 10px 15px;
+    font-size: 15px;
+  }
+
+  /* Make form inputs full-width and touch-friendly */
+  .sidebar input[type="range"],
+  .sidebar select {
+    width: 100%;
+    min-height: 36px;
+  }
+
+  .container_form {
+    flex-wrap: wrap;
+  }
+
+  button,
+  .styled {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* SVG canvas fills the screen */
+  #svg-container svg {
+    width: 100%;
+    height: auto;
+  }
+
+  #outer {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+	  #app {
+    width: 100vw;
+    height: auto; 
+    overflow: visible;
+  }
+	  #app svg {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
