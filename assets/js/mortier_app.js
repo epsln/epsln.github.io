@@ -51,7 +51,6 @@ const button = document.getElementById("generate");
 const label = button.querySelector(".label");
 
 button.addEventListener("click", async () => {
-//document.getElementById("generate").onclick = () => {
 	if (button.disabled) return; // extra safety
   button.disabled = true;
 
@@ -87,6 +86,8 @@ button.addEventListener("click", async () => {
   const hatch_angle= parseInt(document.getElementById("hatch-angle").value);
 
   const color_line = getRGB(document.getElementById("line-color").value);
+  const color_map = document.getElementById("color-map").value;
+
   const tile = document.getElementById("tile-id").value;
 	
 
@@ -97,6 +98,8 @@ button.addEventListener("click", async () => {
 	var hatching = null
 	var angle_param = null
 	var ornements = null
+	var colormap = null
+	console.log(color_map)
 	if (hatch_type != "none"){
 		hatching = { 
 														type: hatch_type,
@@ -114,6 +117,10 @@ button.addEventListener("click", async () => {
 		type: ornement_type,
 		width: width 
 		};
+	}
+
+	if (color_map != "none"){
+		colormap = color_map
 	}
 
 	if (tess_type == "regular"){
@@ -142,8 +149,8 @@ button.addEventListener("click", async () => {
   // fetch API...
 //	fetch("https://mortier.planch.es/tiling", {
 	  try { 
-		//const response = await fetch("https://mortier-api.onrender.com/tiling", {
-		const response = await fetch("https://mortier.planch.es/tiling", {
+		const response = await fetch("https://mortier-api.onrender.com/tiling", {
+		//const response = await fetch("https://mortier.planch.es/tiling", {
 		//const response = await fetch("http://localhost:8000/tiling", {
 														method: "POST",
 														headers: { "Content-Type": "application/json" , "Accept-Encoding": "gzip"},
@@ -154,6 +161,7 @@ button.addEventListener("click", async () => {
 																									angle_parametrisation: angle_param,
 																									ornements: ornements,
 																									hatching: hatching,
+																									colormap: colormap,
 																									tile: tile,
 																									color_line: [color_line[0], color_line[1], color_line[2]] 
 																										})
