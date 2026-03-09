@@ -1,7 +1,7 @@
 ---
 title: "Tiling Generation: First Impact"
 date: 2026-02-03T15:38:55+01:00
-draft: true
+draft: false 
 ---
 
 ![A nice wallpaper](/tiling_pt0/tiling.svg)
