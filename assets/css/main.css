@@ -450,3 +450,7 @@ div.highlight pre {
     height: auto !important;
   }
 }
+
+body:not(.dark-theme) img{
+  filter: invert(1) opacity(0.85) !important;
+}
