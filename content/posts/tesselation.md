@@ -55,9 +55,11 @@ $$
 In other words, if you have one vertex "type", which can be translated, rotated, reflected or "glide reflected" to another vertex of the same type, and there no other, you have a 1-uniform tiling. 
 
 There is 12 1-uniform tilings, which contain the 3 regular tilings and the 8 semi-regular tilings. There is 20 2-uniform tilings, 61 3-uniforms and so on. As you increase the number of orbits, you get much much more possible tilings. In some sense, an $\infty$-uniform tiling is an aperiodic one.
-You can also group k-uniform tilings with the number of distinct vertex figures.
 
-![A boring square tiling](/tiling_pt0/k-archi.svg)
+![A some k-uniform tiling](/tiling_pt0/k-archi.svg)
+
+There is a slight nuance here. The k in k-uniform refers to the number of vertex figures needed to construct a tesselation. However, some of those vertex figures can be reused multiple times in a tesselation, which leads to another way to group those tilings. A tiling with m distinct vertex figures is called a _m-Archimedean tiling_. For example, The tiling $(3 \cdot 4 \cdot 6 \cdot 4)2, 3 \cdot 4^2 \cdot 6)$ is a 3-uniform 2-archimedean tiling, since the vertex figure $(3 \cdot 4 \cdot 6 \cdot 4)$ repeats twice.
+
 
 ## Tiling generation and Soto-Sanchez Algorithm
 "Alright, that's great and all, but how do we _look at them_ ? I don't care about this mathematic mumbo jumbo, I just want to look at cool patterns !", you say, trembling with anger.
@@ -88,16 +90,16 @@ $$V - O = w_1 + 2 w_2 + w_3 + w_4 + w_5 + w_6 + w_{11}$$
 
 However, this representation is not unique. There might be multiple "paths" from one point to another. By reducing the polynomial representation by mod $(w^4 - w^2 + 1)$, the minimal polynomial in the field, we are able to obtain a vector in $\mathbb{Z}[w]$ that uniquely define a point in $\mathbb{R}^2$. For our  representation above, we can reduce it to $2w_3 + 3 w_2 - 1$. This means that our original polynomial can be represented by a integer coefficient polynomial of order 3. When used as coordinates we obtain an unique 4-integer vector for every vertex in the tiling. In this sense, we can also think about them as translation vectors. 
 
+This representation is quite nice since it is exact. It does away with pesky floating points and allows us to have an exact representation of points in a tesselation. You can also understand it in the sense that _all_ regular tesselation lives on a triangular lattice, and that we just use a more natural coordinate system. 
+
 ### Generation
 To obtain a tiling, we need 2 elements: the translation vectors, and the "seeds". The translation vectors define the fundamental domain in which the tiling lives. This cell is a parallelogram that, when tiled, reproduce the tiling inside of it. The seeds are the initial vertices inside the fundamental domain. Those elements are pre-computed, and are extracted from a database of tilings. Both the translation vectors and the seeds are represented using the $\mathbb{Z}[w]$ coordinates, since it allows us for faster (and exact) computation.
-
 
 We first use the translation vector to "pre-tile" our fundamental domain. We tile it once for every 8 directions (think of it as the [Moore Neighborhood](https://en.wikipedia.org/wiki/Moore_neighborhood) of the domain), since some of the seeds might connect to other seeds which are outside of the domain, but just translated once. While doing this, we construct an hashtable. Since the representation of each vertex/seed is unique, we can compute a hash of the representation to enhance neighborhood checking, as we'll see.
 
 ![Path from a tiling](/tiling_pt0/cell_tiled.png)
 
 Then, we iterate over all seeds. For each seed $v$, we check around to see if there is another seed at distance 1. We do so by iterating through the 12 power of $w$ and adding it $v$, or simply looking at the set $\\{v + w^k, \forall k \in \\{0, 1, \dots, 12\\}\\}$. Remember, for tilings made up of regular polygons, every edge of every polygon is of length 1. Since the representation of each vertex/seed is unique and exact, we can use our hashtable for this check. We simply look in our hashtable if the hash of $v + w^k$ exists. If it does, we just join the two by an edge, and we're done. We then can simply tile this "tiling skeleton" along the translation vector to reconstruct the entire tiling. 
-
 
 This representation also allows for easily creating (and identifying) faces from edges, but I won't get into that, since we're starting to run a bit long. Mortier implements all of this and quite more, so be sure to experiment with it ! I'll do another post to explain some more cool stuff you are able to do with it.
 
