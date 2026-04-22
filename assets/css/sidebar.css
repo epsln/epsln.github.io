@@ -17,13 +17,6 @@
   --sb-transition:  140ms ease;
 }
 
-/* ─── Box-sizing fix — prevents inputs/selects from overflowing their parent */
-.sidebar *,
-.sidebar *::before,
-.sidebar *::after {
-  box-sizing: border-box;
-}
-
 /* ─── Google Fonts import ─────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -49,8 +42,6 @@
 .sidebar {
   width: var(--sb-width);
   min-width: var(--sb-width);
-  max-width: var(--sb-width);
-  overflow-x: hidden;
   background: var(--sb-bg);
   border-right: 1px solid var(--sb-border);
   font-family: var(--sb-font-ui);
@@ -146,7 +137,6 @@
   gap: 8px;
   padding: 12px 16px;
   border-bottom: 1px solid var(--sb-border);
-  min-width: 0;
 }
 
 .btn-primary,
@@ -231,8 +221,6 @@ details[open] > .ctrl-section-head .section-icon {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  min-width: 0;      /* allow flex children to shrink */
-  width: 100%;
 }
 
 /* ─── Field primitives ────────────────────────────────────────────────────── */
