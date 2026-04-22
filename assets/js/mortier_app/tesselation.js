@@ -39,6 +39,7 @@ export default class RegularTesselation {
     this.show_underlying = false;
     this.separated_site_mode = false;
     this.lacing_mode = false;
+    this.param_scale = 1;
 
     this.faces = [];
   }
@@ -77,6 +78,7 @@ export default class RegularTesselation {
         faces.push(
           Face.generate(s, neighbors[i], m, {
             param_mode: this.param_mode,
+            param_scale: this.param_scale,
             assym_mode: this.assym_angle,
             separated_site_mode: this.separated_site_mode,
           })
@@ -113,6 +115,8 @@ export default class RegularTesselation {
         );
 
         new_face.vertices = newVerts;
+        new_face.param_scale = this.param_scale;
+
         this.faces.push(new_face);
       }
     }
@@ -126,6 +130,7 @@ export default class RegularTesselation {
         	for (let i = 0; i < this.faces.length; i++){
 						const f = this.faces[i];
           	if (this.angle){
+							//f.param_scale = this.param_scale;
             	const fn = f.ray_transform(
                             this.angle,
                             [this.writer.width, this.writer.height],

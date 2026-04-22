@@ -6,6 +6,7 @@ export default class Face {
     vertices,
     mid_points = [],
     param_mode = false,
+    param_scale = 1,
     assym_mode = false,
     separated_site_mode = false
   ) {
@@ -38,6 +39,7 @@ export default class Face {
     }
 
     this.param_mode = param_mode;
+    this.param_scale = param_scale;
     this.assym_mode = assym_mode;
     this.separated_site_mode = separated_site_mode;
 
@@ -60,10 +62,10 @@ export default class Face {
     }
 
 		if (this.param_mode.param_mode == "perlin"){
-			this.angle_parametrisation = new PerlinNoise(Math.random() * 2**32);
+			this.angle_parametrisation = new PerlinNoise();
 		}
 		else if (this.param_mode.param_mode == "simplex"){
-			this.angle_parametrisation = new SimplexNoise(Math.random() * 2 ** 32);
+			this.angle_parametrisation = new SimplexNoise();
 		}
     this.convex = false;
   }
@@ -71,7 +73,7 @@ export default class Face {
   // -------------------------
   // Static generator
   // -------------------------
-  static generate(v, k, m, param_mode = false, assym_mode = false, separated_site_mode = false) {
+  static generate(v, k, m, param_mode = false, param_scale = 2, assym_mode = false, separated_site_mode = false) {
     const wpow = [
       [1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1],
       [-1, 0, 1, 0], [0, -1, 0, 1],
@@ -87,7 +89,7 @@ export default class Face {
       vertices.push(vertices[i - 1].translate(wpow[k]));
     }
 
-    return new Face(vertices, [], param_mode, assym_mode, separated_site_mode);
+    return new Face(vertices, [], param_mode, param_scale, assym_mode, separated_site_mode);
   }
 
   // -------------------------
@@ -128,8 +130,8 @@ export default class Face {
     const intersection_points = [];
     if (this.param_mode.param_mode) {
       angle = 1 +  this.angle_parametrisation.noise(
-        this.vertices[0].x/bounds[0] * 2,
-        this.vertices[0].y/bounds[1] * 2,
+        this.vertices[0].x/bounds[0] * this.param_scale,
+        this.vertices[0].y/bounds[1] * this.param_scale,
       );
     }
 		//angle = this.vertices[0].x/10;

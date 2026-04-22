@@ -136,6 +136,7 @@ function readParams() {
 		scale:        parseInt(document.getElementById("scale").value),
 		angle:        parseFloat(document.getElementById("angle").value),
 		param:        document.getElementById("parametrisation").value,
+		param_scale:  parseFloat(document.getElementById("param-scale").value),
 		ornement_type: document.getElementById("ornements").value,
 		bands_width:  parseInt(document.getElementById("bands-width").value),
 		color_line:   document.getElementById("line-color").value,
@@ -167,6 +168,7 @@ function computeGeometry() {
 
 	if (p.param !== "none") {
 		t.param_mode = p.param;
+		t.param_scale = p.param_scale;
 	}
 
 	t.angle = p.angle;
@@ -222,7 +224,7 @@ new ResizeObserver(onResize).observe(container);
 // ─── Event wiring ─────────────────────────────────────────────────────────────
 
 // Controls that affect face positions → full recompute
-const GEOMETRY_IDS = ["scale", "angle", "parametrisation", "ornements", "bands-width"];
+const GEOMETRY_IDS = ["scale", "angle", "parametrisation", "param-scale", "ornements", "bands-width"];
 GEOMETRY_IDS.forEach(id => {
 	document.getElementById(id)?.addEventListener("input", computeGeometry);
 });
@@ -277,7 +279,7 @@ function updateVisibility() {
 }
 
 document.querySelectorAll("select").forEach(select => {
-	select.addEventListener("change", updateVisibility);
+	select.addEventListener("input", updateVisibility);
 });
 document.querySelectorAll("checkbox").forEach(select => {
 	select.addEventListener("change", updateVisibility);
