@@ -13,8 +13,15 @@
   --sb-radius:      6px;
   --sb-font-ui:     "DM Sans", "Helvetica Neue", system-ui, sans-serif;
   --sb-font-mono:   "JetBrains Mono", "Fira Mono", ui-monospace, monospace;
-  --sb-width:       380px;
+  --sb-width:       360px;
   --sb-transition:  140ms ease;
+}
+
+/* ─── Box-sizing fix — prevents inputs/selects from overflowing their parent */
+.sidebar *,
+.sidebar *::before,
+.sidebar *::after {
+  box-sizing: border-box;
 }
 
 /* ─── Google Fonts import ─────────────────────────────────────────────────── */
@@ -42,6 +49,8 @@
 .sidebar {
   width: var(--sb-width);
   min-width: var(--sb-width);
+  max-width: var(--sb-width);
+  overflow-x: hidden;
   background: var(--sb-bg);
   border-right: 1px solid var(--sb-border);
   font-family: var(--sb-font-ui);
@@ -137,6 +146,7 @@
   gap: 8px;
   padding: 12px 16px;
   border-bottom: 1px solid var(--sb-border);
+  min-width: 0;
 }
 
 .btn-primary,
@@ -221,6 +231,8 @@ details[open] > .ctrl-section-head .section-icon {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  min-width: 0;      /* allow flex children to shrink */
+  width: 100%;
 }
 
 /* ─── Field primitives ────────────────────────────────────────────────────── */
