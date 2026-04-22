@@ -1,5 +1,8 @@
 import LatticeCoords from "./lattice_coords.js"
 import Face from "./face.js"
+import Complex from "./complex.js"
+import { planeToTileCoords } from "./math_utils.js"
+
 export default class RegularTesselation {
   constructor(writer, tess, tess_id) {
     this.writer = writer;
@@ -40,34 +43,9 @@ export default class RegularTesselation {
     this.faces = [];
   }
 
-  draw_seed() {
-    this.writer.face(this.cell, { dotted: true });
-
-    for (let s of this.seed) {
-      s = new LatticeCoords(s);
-      this.writer.point(s);
-    }
-
-    this.writer.write();
-  }
-
-  draw_cell() {
-    for (let x = -2; x < 2; x++) {
-      let t = this.T1.translate(this.T1.scale(x)).translate(this.T2.scale(-1));
-      let t1 = this.T1.translate(this.T1.scale(x)).translate(this.T2.scale(2));
-      this.writer.line(t, t1, { dotted: true });
-    }
-
-    for (let x = -1; x < 3; x++) {
-      let t = this.T1.translate(this.T1.scale(-2)).translate(this.T2.scale(x));
-      let t1 = this.T1.translate(this.T1.scale(1)).translate(this.T2.scale(x));
-      this.writer.line(t, t1, { dotted: true });
-    }
-  }
-
-  tesselate_face() {
-    //const [i_min, i_max, j_min, j_max] = this.find_corners();
-    const [i_min, i_max, j_min, j_max] = [-4, 4, -4, 4]; 
+  generate_faces() {
+    const [i_min, i_max, j_min, j_max] = this.find_corners();
+    //const [i_min, i_max, j_min, j_max] = [-10, 10, -10, 10]; 
     const neighbor_arr = new Set();
 
     for (const x of [-1, 0, 1]) {
@@ -96,7 +74,6 @@ export default class RegularTesselation {
       for (let i = 0; i < neighbors.length - 1; i++) {
         const h = 6 - (neighbors[i + 1] - neighbors[i]);
         const m = 12 / h;
-
         faces.push(
           Face.generate(s, neighbors[i], m, {
             param_mode: this.param_mode,
@@ -140,56 +117,71 @@ export default class RegularTesselation {
       }
     }
   }
-	/*
-  find_corners() {
-    const W = [
-      1,
-      0.8660254037844386 + 0.5j,
-      0.5 + 0.8660254037844386j,
-      1j,
-    ];
+	tesselate_face(){
+        this.generate_faces();
 
-    if (this.show_base) {
-      return [-1, 2, -1, 2];
-    }
+				var new_faces = []
+				
+        if (this.angle){
+        	for (let i = 0; i < this.faces.length; i++){
+						const f = this.faces[i];
+          	if (this.angle){
+            	const fn = f.ray_transform(
+                            this.angle,
+                            [this.writer.width, this.writer.height],
+                            0,
+                        );
+							new_faces.push(fn);
+						}
+					}
+					this.faces = new_faces
+				}
+	}
+	find_corners() {
 
-    let i_min = 1000,
-      i_max = -1000,
-      j_min = 1000,
-      j_max = -1000;
+  const w = [
+    new LatticeCoords([1, 0, 0, 0]),
+    new LatticeCoords([0, 1, 0, 0]),
+    new LatticeCoords([0, 0, 1, 0]),
+    new LatticeCoords([0, 0, 0, 1]),
+  ];
 
-    const [,, width, height] = this.writer.size;
+  let iMin = Infinity;
+  let iMax = -Infinity;
+  let jMin = Infinity;
+  let jMax = -Infinity;
 
-    const corners = [
-      0,
-      width,
-      height * 1j,
-      width + height * 1j,
-    ];
+  const corners = [
+    { x: 0, y: 0 },
+    { x: this.writer.width, y: 0 },
+    { x: 0, y: this.writer.height },
+    { x: this.writer.width, y: this.writer.height },
+  ];
 
-    for (const z of corners) {
-      const z_ = plane_to_tile_coords(
-        this.tess,
-        W,
-        z.real / this.writer.n_tiles,
-        z.imag / this.writer.n_tiles
-      );
+  const tiling = this.tess;
+  const wvec = w;
 
-      i_min = Math.min(i_min, z_.real);
-      j_min = Math.min(j_min, z_.imag);
-      i_max = Math.max(i_max, z_.real);
-      j_max = Math.max(j_max, z_.imag);
-    }
+  for (const c of corners) {
+    // normalize to tile sampling space
+    const x = c.x / this.writer.n_tiles;
+    const y = c.y / this.writer.n_tiles;
 
-    i_min = Math.floor(i_min - 1);
-    i_max = Math.ceil(i_max + 2);
-    j_min = Math.floor(j_min - 1);
-    j_max = Math.ceil(j_max + 2);
+    // convert to tile coords
+    const p = planeToTileCoords(tiling, wvec, x, y);
 
-    return [i_min, i_max, j_min, j_max];
+    iMin = Math.min(iMin, p.x);
+    iMax = Math.max(iMax, p.x);
+    jMin = Math.min(jMin, p.y);
+    jMax = Math.max(jMax, p.y);
   }
-	*/
 
+  return [
+    Math.floor(iMin - 1),
+    Math.ceil(iMax + 1),
+    Math.floor(jMin - 1),
+    Math.ceil(jMax + 1),
+  ];
+}
   set_param_mode(mode = false) {
     this.param_mode = mode;
   }
@@ -203,11 +195,11 @@ export default class RegularTesselation {
     this.tess_id = tess_id;
 
     this.T0 = new LatticeCoords([0, 0, 0, 0]);
-    this.T1 = new LatticeCoords(tess["T1"]);
-    this.T2 = new LatticeCoords(tess["T2"]);
+    this.T1 = new LatticeCoords(tess.tess_id["T1"]);
+    this.T2 = new LatticeCoords(tess.tess_id["T2"]);
     this.T3 = this.T1.translate(this.T2);
 
-    this.seed = this.tess["Seed"];
+    this.seed = this.tess.tess_id["Seed"];
     this.cell = new Face([this.T0, this.T1, this.T3, this.T2]);
   }
 }

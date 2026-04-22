@@ -8,8 +8,8 @@
     {{ partial "post/comments.html" . }}
   {{ end }}
 </div>
-{{ $script := resources.Get "js/mortier_app.js" | minify }}
-		<script src="{{ $script.Permalink }}" media="screen"></script>
+{{ $script := resources.Get "js/mortier_app/mortier.js" | js.Build }}
+		<script src="{{ $script.Permalink }}" type="module" media="screen"></script>
 {{ $styles := resources.Get "css/main.css" | minify }}
 <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
 {{- end }}

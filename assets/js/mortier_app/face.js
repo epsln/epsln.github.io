@@ -1,4 +1,6 @@
 import LatticeCoords from "./lattice_coords.js"
+import EuclideanCoords from "./euclidean_coords.js"
+import { SimplexNoise, PerlinNoise } from "./math_utils.js"
 export default class Face {
   constructor(
     vertices,
@@ -57,6 +59,12 @@ export default class Face {
       this.vertices.reverse();
     }
 
+		if (this.param_mode.param_mode == "perlin"){
+			this.angle_parametrisation = new PerlinNoise(Math.random() * 2**32);
+		}
+		else if (this.param_mode.param_mode == "simplex"){
+			this.angle_parametrisation = new SimplexNoise(Math.random() * 2 ** 32);
+		}
     this.convex = false;
   }
 
@@ -118,15 +126,14 @@ export default class Face {
     const vertices = [];
     const mid_points = [];
     const intersection_points = [];
-
-    if (this.param_mode) {
-      angle = angle_parametrisation(
-        this.vertices[0],
-        this.param_mode,
-        bounds,
-        frame_num
+    if (this.param_mode.param_mode) {
+      angle = 1 +  this.angle_parametrisation.noise(
+        this.vertices[0].x/bounds[0] * 2,
+        this.vertices[0].y/bounds[1] * 2,
       );
     }
+		//angle = this.vertices[0].x/10;
+		//angle = 0;
 
     angle = Math.max(0, Math.min(angle, Math.PI / 2));
 
@@ -186,14 +193,15 @@ export default class Face {
         original_vertex: p1,
       });
 
-      vertices.push([mid0.x, mid0.y]);
-      mid_points.push([[mid0.x, mid0.y], angle]);
+      vertices.push(new EuclideanCoords([mid0.x, mid0.y]));
+      vertices.push(new EuclideanCoords([cx, cy]));
+      mid_points.push([new EuclideanCoords([mid0.x, mid0.y]), angle]);
     }
 
     vertices.push(vertices[0]);
 
     new_face.vertices = vertices;
-    new_face.mid_points = mid_points;
+    new_face.midPoints = mid_points;
     new_face.intersection_points = intersection_points;
 
     return new_face;
