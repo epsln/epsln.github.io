@@ -387,6 +387,7 @@ div.highlight pre {
     padding: 0.75rem;
 		height: auto;
     box-sizing: border-box;
+		max-width: none;
   }
 
   /* Collapse the sidebar content by default */

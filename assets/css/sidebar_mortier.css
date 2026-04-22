@@ -474,13 +474,14 @@ button:disabled {
 }
 
 /* ─── Mobile ──────────────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 768px ) {
   .page-with-sidebar {
     flex-direction: column;
+
   }
 
   .sidebar {
-    width: 100%;
+    width: 100%; 
     min-width: 0;
     border-right: none;
     border-bottom: 1px solid var(--sb-border);
