@@ -264,6 +264,48 @@ document.getElementById("generate").addEventListener("click", () => {
 	computeGeometry();
 });
 
+document.getElementById("randomize").addEventListener("click", () => {
+	getRandomTiling();
+	// Sync the dropdown to "random" so it stays consistent
+	const sel = document.getElementById("tess-id");
+	if (sel) sel.value = tess_id.id;
+	document.getElementById("angle").value = Math.random() * 1.4;
+	document.getElementById("param-scale").value = Math.random() * 20;
+	document.getElementById("line-color").value = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'); 
+	document.getElementById("bg-color").value = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'); 
+	const r0 = Math.random()
+	if (r0 < 0.25)
+		document.getElementById("parametrisation").value = 'simplex'; 
+	else if (r0 > 0.5 && r0 < 0.5)
+		document.getElementById("parametrisation").value = 'perlin'; 
+	else
+		document.getElementById("parametrisation").value = 'none'; 
+
+	const r = Math.random()
+	if (r < 0.25)
+		document.getElementById("color-map").value = 'viridis'; 
+	else if (r > 0.25 && r < 0.5)
+		document.getElementById("color-map").value = 'magma'; 
+	else if (r > 0.5 && r < 0.75)
+		document.getElementById("color-map").value = 'plasma'; 
+	else 
+		document.getElementById("color-map").value = 'none'; 
+	const c = Math.random()
+	
+	if (document.getElementById("parametrisation").value == 'none'){
+		if (c < 0.25)
+			document.getElementById("ornements").value = 'bands'; 
+		else if (c > 0.25 && c < 0.5)
+			document.getElementById("ornements").value = 'laces'; 
+		else
+			document.getElementById("ornements").value = 'none'; 
+		document.getElementById("bands-width").value = Math.random() * 10;
+	}
+	else
+		document.getElementById("ornements").value = 'none'; 
+	computeGeometry();
+});
+
 // ─── Visibility toggling for conditional params ───────────────────────────────
 
 const params = document.querySelectorAll(".param");
