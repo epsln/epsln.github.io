@@ -54,6 +54,7 @@ function debounce(fn, ms) {
 var db = require('./database.json');
 const tess_type = "regular";
 var tess_id;
+var angle;
 
 // Group a flat list of tiling keys into labelled optgroup buckets.
 function groupTessKeys(keys) {
@@ -110,9 +111,10 @@ export function getRandomTiling() {
 }
 
 function chose_tiling() {
-	const tess_mode = document.getElementById("tess-id").value;
-	if (tess_mode === "random") {
+	const tess_mode = document.getElementById("tess-id");
+	if (tess_mode.value === "random") {
 		getRandomTiling();
+		if (tess_mode) tess_mode.value = tess_id.id;
 	} else {
 		tess_id = { id: tess_mode, ...db[tess_mode] };
 	}
@@ -174,6 +176,11 @@ function computeGeometry() {
 	t.angle = p.angle;
 	t.tesselate_face();
 
+  const angle= document.getElementById("pic-angle");
+  angle.textContent = p.angle 
+  const param_scale = document.getElementById("p-scale");
+  param_scale.textContent = p.param_scale 
+
 	drawFaces();
 }
 
@@ -187,6 +194,7 @@ function drawFaces() {
 	if (!t) return;
 
 	const p = readParams();
+
 
 	// Reset SVG content
 	while (t.writer.svg.firstChild) {
@@ -252,7 +260,7 @@ document.getElementById("generate").addEventListener("click", () => {
 	getRandomTiling();
 	// Sync the dropdown to "random" so it stays consistent
 	const sel = document.getElementById("tess-id");
-	if (sel) sel.value = "random";
+	if (sel) sel.value = tess_id.id;
 	computeGeometry();
 });
 
@@ -292,6 +300,64 @@ chose_tiling();
 updateVisibility();
 computeGeometry();
 
+// ─── Animation ─────────────────────────────────────────────────────────────────────
+let animating_angle = false;
+let animating_param_scale = false;
+let s = 0;
+
+function animate_angle() {
+  if (!animating_angle) return;
+
+  s += 0.05; // speed
+
+  // update params
+  const angleInput = document.getElementById("angle");
+  angleInput.value = 0.1 + (0.5 + 0.5 * Math.sin(s)) * 1.4;
+  // trigger your render pipeline
+  computeGeometry();
+  requestAnimationFrame(animate_angle);
+}
+
+function animate_param_scale() {
+  if (!animating_param_scale) return;
+
+  s += 0.01; // speed
+
+  // update params
+  const param_scale = document.getElementById("param-scale");
+  param_scale.value = (0.1 + (0.5 + 0.5 * Math.sin(s)) * 20).toFixed(2);
+
+  // trigger your render pipeline
+  computeGeometry();
+  requestAnimationFrame(animate_param_scale);
+}
+
+
+const btn_anim_angle = document.getElementById("anim-angle-toggle");
+btn_anim_angle.onclick = () => {
+  animating_angle = !animating_angle;
+  const btn_icon = document.getElementById("btn-icon-angle");
+  if (animating_angle){ 
+		btn_icon.textContent = "◼";
+		animate_angle();
+	}
+	else{
+		btn_icon.textContent = "▶︎";
+	}
+};
+
+const btn_anim_param = document.getElementById("anim-param-scale-toggle");
+btn_anim_param.onclick = () => {
+  animating_param_scale = !animating_param_scale;
+  const btn_icon = document.getElementById("btn-icon-param");
+  if (animating_param_scale){
+		btn_icon.textContent = "◼";
+		animate_param_scale();
+	}
+	else{
+		btn_icon.textContent = "▶︎";
+	}
+};
 
 // ─── Print modal (unchanged below) ───────────────────────────────────────────
 

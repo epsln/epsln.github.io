@@ -263,6 +263,24 @@ details[open] > .ctrl-section-head .section-icon {
   letter-spacing: 0.03em;
 }
 
+.param-row {
+  display: flex;
+  align-items: center;
+  gap: 0px;              /* space between slider and button */
+}
+
+.param-row input[type="range"] {
+  flex: 1;               /* slider takes all available width */
+}
+
+.param-row button {
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ─── Range slider ────────────────────────────────────────────────────────── */
 .ctrl-range {
   -webkit-appearance: none;
