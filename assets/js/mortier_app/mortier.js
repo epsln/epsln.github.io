@@ -29,6 +29,11 @@ document.getElementById("save-as").addEventListener("click", function () {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
+function updateTilingName(name) {
+  const el = document.getElementById("current-tiling");
+  if (el) el.textContent = name;
+}
+
 function getRGB(hex) {
 	var res = hex.match(/[a-f0-9]{2}/gi);
 	return res && res.length === 3
@@ -99,6 +104,8 @@ export function getRandomTiling() {
 	const keys = Object.keys(db);
 	if (keys.length === 0) throw new Error("Empty tiling database");
 	const randomKey = keys[Math.floor(Math.random() * keys.length)];
+	updateTilingName(randomKey);
+
 	tess_id = { id: randomKey, ...db[randomKey] };
 }
 
@@ -230,6 +237,12 @@ RENDER_IDS.forEach(id => {
 document.getElementById("tess-id").addEventListener("input", () => {
 	chose_tiling();
 	computeGeometry();
+});
+
+
+document.getElementById("tess-id").addEventListener("change", () => {
+  const value = select.value;
+  updateTilingName(value);
 });
 
 // Generate button: pick a new random tiling, then recompute
