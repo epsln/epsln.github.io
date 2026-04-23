@@ -308,7 +308,11 @@ document.getElementById("randomize").addEventListener("click", () => {
 	// Sync the dropdown to "random" so it stays consistent
 	const sel = document.getElementById("tess-id");
 	if (sel) sel.value = tess_id.id;
-	document.getElementById("angle").value = Math.random() * 1.4;
+	angle = Math.random() * 1.4
+	document.getElementById("angle").value = angle; 
+	editor.a1 = angle 
+	editor.a0 = angle; 
+	document.getElementById("angle").dispatchEvent(new Event('input'))
 	document.getElementById("param-scale").value = Math.random() * 20;
 	document.getElementById("line-color").value = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'); 
 	document.getElementById("bg-color").value = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'); 
@@ -343,15 +347,18 @@ document.getElementById("randomize").addEventListener("click", () => {
 	else
 		document.getElementById("ornements").value = 'none'; 
 	const r1 = Math.random()
-	if (r1 < 0.2){
+	if (r1 < 2){
 			document.getElementById("sep-mode").value = 'enabled'; 
-			document.getElementById("sep-pos").value = Math.random()/2; 
+			const sep = Math.random()/2;
+			document.getElementById("sep-pos").value = sep
+			editor.sep = sep * (editor._W/2 - editor._LX); 
 	}
 	else{
 			document.getElementById("sep-mode").value = 'disabled'; 
 	}
 	document.getElementById("assym").value = 'disabled'; 
 	computeGeometry();
+	editor._update();
 });
 
 // ─── Visibility toggling for conditional params ───────────────────────────────
