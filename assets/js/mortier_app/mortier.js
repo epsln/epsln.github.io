@@ -350,6 +350,7 @@ document.getElementById("randomize").addEventListener("click", () => {
 	else{
 			document.getElementById("sep-mode").value = 'disabled'; 
 	}
+	document.getElementById("assym").value = 'disabled'; 
 	computeGeometry();
 });
 
