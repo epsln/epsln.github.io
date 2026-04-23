@@ -8,7 +8,9 @@ export default class Face {
     param_mode = false,
     param_scale = 1,
     assym_mode = false,
-    separated_site_mode = false
+		assym_angle = 1,
+    separated_site_mode = false,
+    separated_site_dist = 0,
   ) {
     this.vertices = vertices;
 
@@ -41,7 +43,9 @@ export default class Face {
     this.param_mode = param_mode;
     this.param_scale = param_scale;
     this.assym_mode = assym_mode;
+    this.assym_angle = assym_angle;
     this.separated_site_mode = separated_site_mode;
+    this.separated_site_dist = separated_site_dist;
 
     if (this.separated_site_mode) {
       this.separated_site = this.separated_site_mode;
@@ -73,7 +77,7 @@ export default class Face {
   // -------------------------
   // Static generator
   // -------------------------
-  static generate(v, k, m, param_mode = false, param_scale = 2, assym_mode = false, separated_site_mode = false) {
+  static generate(v, k, m, param_mode = false, param_scale = 2, assym_mode = false, assym_angle = 1, separated_site_mode = false) {
     const wpow = [
       [1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1],
       [-1, 0, 1, 0], [0, -1, 0, 1],
@@ -89,7 +93,7 @@ export default class Face {
       vertices.push(vertices[i - 1].translate(wpow[k]));
     }
 
-    return new Face(vertices, [], param_mode, param_scale, assym_mode, separated_site_mode);
+    return new Face(vertices, [], param_mode, param_scale, assym_mode, assym_angle, separated_site_mode);
   }
 
   // -------------------------
@@ -138,27 +142,55 @@ export default class Face {
 		//angle = 0;
 
     angle = Math.max(0, Math.min(angle, Math.PI / 2));
+		var angle_l = angle
 
     for (let i = 0; i < this.vertices.length; i++) {
       const p0 = this.vertices[i];
       const p1 = this.vertices[(i + 1) % this.vertices.length];
       const p2 = this.vertices[(i + 2) % this.vertices.length];
 
-      const mid0 = {
+			if (this.assym_mode == "enabled"){
+				const crit_a = this.critical_angle(p0, p1, p2);
+				angle_l = Math.max(0, Math.min(this.assym_angle, Math.PI / 2));
+				angle = Math.min(angle, crit_a);
+				if (this.param_mode.param_mode) {
+					angle_l = 1 +  this.angle_parametrisation.noise(
+						bounds[0] + this.vertices[0].x/bounds[0] * this.param_scale,
+						bounds[1] + this.vertices[0].y/bounds[1] * this.param_scale,
+					);
+					angle_l = Math.max(0, Math.min(angle_l, Math.PI / 2));
+				}
+				angle_l = Math.min(angle_l, crit_a);
+			}
+
+      var mid0 = {
         x: (p0.x + p1.x) / 2,
         y: (p0.y + p1.y) / 2,
       };
 
-      const mid1 = {
+      var mid1 = {
         x: (p1.x + p2.x) / 2,
         y: (p1.y + p2.y) / 2,
       };
+      if (this.separated_site_mode == "enabled"){
+				var t = 1 - this.separated_site_dist;
+				mid0 = {
+					x: (1 - t) * p0.x + t * p1.x,
+    			y: (1 - t) * p0.y + t * p1.y
+				};
+
+				t = this.separated_site_dist;
+				mid1 = {
+					x: (1 - t) * p1.x + t * p2.x,
+    			y: (1 - t) * p1.y + t * p2.y
+				}
+			}
 
       const heading0 = Math.atan2(p1.y - p0.y, p1.x - p0.x);
       const heading1 = Math.atan2(p2.y - p1.y, p2.x - p1.x);
-
-      const angle0 = heading0 + angle;
-      const angle1 = heading1 - angle;
+				
+      var angle0 = heading0 + angle;
+      var angle1 = heading1 - angle_l;
 
       const end0 = {
         x: mid0.x + 100 * Math.cos(angle0),
@@ -197,6 +229,17 @@ export default class Face {
 
       vertices.push(new EuclideanCoords([mid0.x, mid0.y]));
       vertices.push(new EuclideanCoords([cx, cy]));
+      if (this.separated_site_mode){
+          vertices.push(new EuclideanCoords([mid1.x, mid1.y]))
+          if (this.assym_mode){
+              mid_points.push(
+                  [new EuclideanCoords([mid1.x, mid1.y]), this.assym_angle]
+              );
+					}
+          else
+              mid_points.push([new EuclideanCoords([p_mid_1x, p_mid_1y]), angle]);
+			}
+
       mid_points.push([new EuclideanCoords([mid0.x, mid0.y]), angle]);
     }
 

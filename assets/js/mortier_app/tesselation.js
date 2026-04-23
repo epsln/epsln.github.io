@@ -34,10 +34,12 @@ export default class RegularTesselation {
     this.show_base = false;
     this.ray_tesselation = false;
     this.angle = false;
+    this.assym_mode = false;
     this.assym_angle = false;
+    this.sep_mode = false;
+    this.sep_dist = false;
     this.param_mode = false;
     this.show_underlying = false;
-    this.separated_site_mode = false;
     this.lacing_mode = false;
     this.param_scale = 1;
 
@@ -79,8 +81,10 @@ export default class RegularTesselation {
           Face.generate(s, neighbors[i], m, {
             param_mode: this.param_mode,
             param_scale: this.param_scale,
-            assym_mode: this.assym_angle,
-            separated_site_mode: this.separated_site_mode,
+            assym_mode: this.assym_mode,
+            assym_angle: this.assym_angle,
+            separated_site_mode: this.sep_mode,
+            separated_site_dist: this.sep_dist,
           })
         );
       }
@@ -116,7 +120,10 @@ export default class RegularTesselation {
 
         new_face.vertices = newVerts;
         new_face.param_scale = this.param_scale;
-
+        new_face.assym_mode = this.assym_mode;
+        new_face.assym_angle = this.assym_angle;
+        new_face.separated_site_mode = this.sep_mode;
+        new_face.separated_site_dist = this.sep_dist;
         this.faces.push(new_face);
       }
     }

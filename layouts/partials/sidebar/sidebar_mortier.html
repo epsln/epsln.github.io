@@ -51,7 +51,7 @@
         <span class="ctrl-glyph">◈</span>
         <h3>Mortier</h3>
       </div>
-      <p class="ctrl-sub">K-uniform tessellation generator</p>
+      <p class="ctrl-sub">Tessellation generator</p>
     </div>
 
     <div class="ctrl-actions">
@@ -1708,7 +1708,6 @@
         		</div>
         </div>
 
-
         <div class="ctrl-field">
           <label class="ctrl-label" for="parametrisation">Parametrisation</label>
           <select id="parametrisation" class="ctrl-select">
@@ -1735,7 +1734,70 @@
 					</div>
         </div>
 
+        <div class="ctrl-field">
+          <label class="ctrl-label" for="assym">Assymetrical Angle</label>
+          <div class="ctrl-segmented">
+            <input type="radio" name="assym-radio" id="assym-disabled"   value="disabled"  checked>
+            <label for="assym-disabled">Disabled</label>
+            <input type="radio" name="assym-radio" id="assym-enabled"  value="enabled">
+            <label for="assym-enabled">Enabled</label>
+          </div>
+          <!-- hidden select kept for JS compatibility -->
+          <select id="assym" class="ctrl-hidden">
+            <option value="disabled">Disabled</option>
+            <option value="enabled">Enabled</option>
+          </select>
+        </div>
+
+        <div class="ctrl-hidden" data-show-assym="enabled">
+          <div class="ctrl-label-row">
+            <label class="ctrl-label" for="assym-angle">Assymetrical angle</label>
+            <output class="ctrl-value" for="assym-angle", id="assymetrical-angle">0</output>
+          </div>
+					<div class="row">
+					<div class="ctrl-actions">
+						<button id="anim-assym-toggle" class="btn-primary">
+							<span class="btn-icon" id="btn-icon-assym" style="padding-bottom:3px">▶︎</span> 
+						</button>
+					</div>
+          <input type="range" id="assym-angle" class="ctrl-range"
+                 min="0.01" max="1.53" step="0.01" value="0"
+                 oninput="this.previousElementSibling.querySelector('output').value=parseFloat(this.value).toFixed(3)">
+					</div>
+				</div>
+
+        <div class="ctrl-field">
+          <label class="ctrl-label" for="sep-mode">Separated Sites</label>
+          <div class="ctrl-segmented">
+            <input type="radio" name="separation-radio" id="separation-disabled"   value="disabled"  checked>
+            <label for="separation-disabled">Disabled</label>
+            <input type="radio" name="separation-radio" id="separation-enabled"  value="enabled">
+            <label for="separation-enabled">Enabled</label>
+          </div>
+          <!-- hidden select kept for JS compatibility -->
+          <select id="sep-mode" class="ctrl-hidden">
+            <option value="disabled">Disabled</option>
+            <option value="enabled">Enabled</option>
+          </select>
+        </div>
+        <div class="ctrl-hidden" data-show-separation="enabled">
+          <div class="ctrl-label-row">
+            <label class="ctrl-label" for="site-position">Site Position</label>
+            <output class="ctrl-value" for="site-position", id="sep-pos">0</output>
+          </div>
+					<div class="param-row">
+					<div class="ctrl-actions">
+						<button id="anim-assym-toggle" class="btn-primary">
+							<span class="btn-icon" id="btn-icon-assym" style="padding-bottom:3px">▶︎</span> 
+						</button>
+					</div>
+          <input type="range" id="separation-pos" class="ctrl-range"
+                 min="0.01" max="1" step="0.01" value="0.5"
+                 oninput="this.previousElementSibling.querySelector('output').value=parseFloat(this.value).toFixed(3)">
+					</div>
       </div>
+					<div id="pic-editor"></div>
+    Configuration of the launch sites for the Polygon in Contact transform.  
     </details>
 
     <!-- ── Ornements ─────────────────────────── -->
@@ -1817,6 +1879,20 @@
       document.getElementById('ornements').dispatchEvent(new Event('input', {bubbles:true}));
     });
   });
+
+  document.querySelectorAll('input[name="assym-radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('assym').value = r.value;
+      document.getElementById('assym').dispatchEvent(new Event('input', {bubbles:true}));
+    });
+  });
+
+  document.querySelectorAll('input[name="separation-radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('sep-mode').value = r.value;
+      document.getElementById('sep-mode').dispatchEvent(new Event('input', {bubbles:true}));
+    });
+	});
 
   // Live search filter for tess-id dropdown
   (function() {

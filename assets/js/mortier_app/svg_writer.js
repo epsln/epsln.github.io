@@ -219,7 +219,6 @@ export default class SVGWriter {
         }
       } else {
         // PIC path: update crossing state then draw outline rings
-				console.log("!");
         fillIntersectPoints(face, this.intersectPoints);
         this._drawOutlineLines(face.vertices);
       }

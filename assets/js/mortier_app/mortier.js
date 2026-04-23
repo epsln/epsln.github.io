@@ -5,6 +5,34 @@ import { rgbToCss, viridis, plasma, magma } from "./colors.js"
 
 const container = document.getElementById("app");
 
+import PicEditor from './pic_editor.js';
+
+// Add a container div wherever you want it in the sidebar HTML:
+// <div id="pic-editor"></div>
+
+const editor = new PicEditor(document.getElementById('pic-editor'), {
+  angle: 0.5,
+  assymAngle: 0.5,
+  separatedSite: .5,
+});
+
+
+document.getElementById('assym').addEventListener('input', () => {
+  editor.symmetric = (document.getElementById('assym').value === 'disabled');
+});
+
+editor.onChange = ({ angle, assymAngle, separatedSite }) => {
+  // Sync the hidden sliders so readouts stay consistent
+  document.getElementById('angle').value = angle;
+  document.getElementById('assym-angle').value = assymAngle;
+	if (0.5 - separatedSite < 0.001)
+	  document.getElementById('sep-mode').value = "disabled"; 
+	else
+	  document.getElementById('sep-mode').value = "enabled"; 
+  document.getElementById('separation-pos').value = separatedSite 
+  computeGeometry();
+};
+
 // ─── Save-as SVG ─────────────────────────────────────────────────────────────
 
 document.getElementById("save-as").addEventListener("click", function () {
@@ -54,7 +82,6 @@ function debounce(fn, ms) {
 var db = require('./database.json');
 const tess_type = "regular";
 var tess_id;
-var angle;
 
 // Group a flat list of tiling keys into labelled optgroup buckets.
 function groupTessKeys(keys) {
@@ -137,6 +164,10 @@ function readParams() {
 		heightPx,
 		scale:        parseInt(document.getElementById("scale").value),
 		angle:        parseFloat(document.getElementById("angle").value),
+		assym_mode:        document.getElementById("assym").value,
+		assym_angle:        parseFloat(document.getElementById("assym-angle").value),
+		sep_mode:        document.getElementById("sep-mode").value,
+		sep_pos:        parseFloat(document.getElementById("separation-pos").value),
 		param:        document.getElementById("parametrisation").value,
 		param_scale:  parseFloat(document.getElementById("param-scale").value),
 		ornement_type: document.getElementById("ornements").value,
@@ -174,12 +205,20 @@ function computeGeometry() {
 	}
 
 	t.angle = p.angle;
+	t.assym_mode = p.assym_mode;
+	t.assym_angle = p.assym_angle;
+	t.sep_mode = p.sep_mode;
+	t.sep_dist = p.sep_pos;
 	t.tesselate_face();
 
   const angle= document.getElementById("pic-angle");
   angle.textContent = p.angle 
   const param_scale = document.getElementById("p-scale");
   param_scale.textContent = p.param_scale 
+  const assym_angle = document.getElementById("assymetrical-angle");
+  assym_angle.textContent = p.assym_angle
+  const sep_pos = document.getElementById("sep-pos");
+  sep_pos.textContent = p.sep_pos
 
 	drawFaces();
 }
@@ -224,7 +263,6 @@ function drawFaces() {
 // ─── Resize: recompute geometry (tile count depends on canvas size) ───────────
 
 const onResize = debounce(() => {
-	computeGeometry();
 }, 150);
 
 new ResizeObserver(onResize).observe(container);
@@ -232,7 +270,7 @@ new ResizeObserver(onResize).observe(container);
 // ─── Event wiring ─────────────────────────────────────────────────────────────
 
 // Controls that affect face positions → full recompute
-const GEOMETRY_IDS = ["scale", "angle", "parametrisation", "param-scale", "ornements", "bands-width"];
+const GEOMETRY_IDS = ["scale", "angle", "parametrisation", "param-scale", "assym", "assym-angle", "sep-mode", "sep-pos", "ornements", "bands-width"];
 GEOMETRY_IDS.forEach(id => {
 	document.getElementById(id)?.addEventListener("input", computeGeometry);
 });
@@ -242,6 +280,7 @@ const RENDER_IDS = ["color-map", "line-color", "bg-color"];
 RENDER_IDS.forEach(id => {
 	document.getElementById(id)?.addEventListener("input", drawFaces);
 });
+
 
 // Tiling selector: choosing a new tiling always needs a full recompute
 document.getElementById("tess-id").addEventListener("input", () => {
@@ -303,6 +342,14 @@ document.getElementById("randomize").addEventListener("click", () => {
 	}
 	else
 		document.getElementById("ornements").value = 'none'; 
+	const r1 = Math.random()
+	if (r1 < 0.2){
+			document.getElementById("sep-mode").value = 'enabled'; 
+			document.getElementById("sep-pos").value = Math.random()/2; 
+	}
+	else{
+			document.getElementById("sep-mode").value = 'disabled'; 
+	}
 	computeGeometry();
 });
 
