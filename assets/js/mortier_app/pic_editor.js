@@ -178,9 +178,9 @@ export default class PicEditor {
     this._lb1.setAttribute('y', BLY - loff * Math.cos(m1) + 4);
     this._lb1.textContent = this.a1.toFixed(3);
 
-    this._ov0.innerHTML = `angle₀&nbsp;<b>${this.a0.toFixed(3)}</b>`;
-    this._ov1.innerHTML = `angle₁&nbsp;<b>${this.a1.toFixed(3)}</b>`;
-    this._ovs.innerHTML = `separation&nbsp;<b>${this.dist.toFixed(3)}</b>`;
+    this._ov0.innerHTML = `angle₀&nbsp;<b>${this.a0.toFixed(2)}</b>`;
+    this._ov1.innerHTML = `angle₁&nbsp;<b>${this.a1.toFixed(2)}</b>`;
+    this._ovs.innerHTML = `separation&nbsp;<b>${(0.5 - this.dist).toFixed(2)}</b>`;
 
     if (this.onChange) {
       this.onChange({

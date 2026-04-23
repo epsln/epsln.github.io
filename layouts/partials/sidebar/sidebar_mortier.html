@@ -1690,8 +1690,41 @@
         <span class="section-icon">▸</span> Transform
       </summary>
       <div class="ctrl-body">
+    			Drag the end of the rays to modify the launch angles. Drag the bottom to separate the launch sites.
+					<div id="pic-editor"></div>
 
-        <div class="ctrl-field param" data-show-parametrisation="none">
+        <div class="ctrl-field">
+          <label class="ctrl-label" for="assym">Assymetrical Angle</label>
+          <div class="ctrl-segmented">
+            <input type="radio" name="assym-radio" id="assym-disabled"   value="disabled"  checked>
+            <label for="assym-disabled">Disabled</label>
+            <input type="radio" name="assym-radio" id="assym-enabled"  value="enabled">
+            <label for="assym-enabled">Enabled</label>
+          </div>
+          <!-- hidden select kept for JS compatibility -->
+          <select id="assym" class="ctrl-hidden">
+            <option value="disabled">Disabled</option>
+            <option value="enabled">Enabled</option>
+          </select>
+        </div>
+
+        <div class="ctrl-hidden" data-show-assym="enabled">
+          <div class="ctrl-label-row">
+            <label class="ctrl-label" for="assym-angle">Assymetrical angle</label>
+            <output class="ctrl-value" for="assym-angle", id="assymetrical-angle">0</output>
+          </div>
+					<div class="row">
+					<div class="ctrl-actions">
+						<button id="anim-assym-toggle" class="btn-primary">
+							<span class="btn-icon" id="btn-icon-assym" style="padding-bottom:3px">▶︎</span> 
+						</button>
+					</div>
+          <input type="range" id="assym-angle" class="ctrl-range"
+                 min="0.01" max="1.53" step="0.01" value="0"
+                 oninput="this.previousElementSibling.querySelector('output').value=parseFloat(this.value).toFixed(3)">
+					</div>
+				</div>
+        <div class="ctrl-hidden" data-show-parametrisation="none">
           <div class="ctrl-label-row">
             <label class="ctrl-label" for="angle">Polygon in Contact angle</label>
             <output class="ctrl-value" for="angle" id = "pic-angle">0</output>
@@ -1734,39 +1767,8 @@
 					</div>
         </div>
 
-        <div class="ctrl-field">
-          <label class="ctrl-label" for="assym">Assymetrical Angle</label>
-          <div class="ctrl-segmented">
-            <input type="radio" name="assym-radio" id="assym-disabled"   value="disabled"  checked>
-            <label for="assym-disabled">Disabled</label>
-            <input type="radio" name="assym-radio" id="assym-enabled"  value="enabled">
-            <label for="assym-enabled">Enabled</label>
-          </div>
-          <!-- hidden select kept for JS compatibility -->
-          <select id="assym" class="ctrl-hidden">
-            <option value="disabled">Disabled</option>
-            <option value="enabled">Enabled</option>
-          </select>
-        </div>
 
-        <div class="ctrl-hidden" data-show-assym="enabled">
-          <div class="ctrl-label-row">
-            <label class="ctrl-label" for="assym-angle">Assymetrical angle</label>
-            <output class="ctrl-value" for="assym-angle", id="assymetrical-angle">0</output>
-          </div>
-					<div class="row">
-					<div class="ctrl-actions">
-						<button id="anim-assym-toggle" class="btn-primary">
-							<span class="btn-icon" id="btn-icon-assym" style="padding-bottom:3px">▶︎</span> 
-						</button>
-					</div>
-          <input type="range" id="assym-angle" class="ctrl-range"
-                 min="0.01" max="1.53" step="0.01" value="0"
-                 oninput="this.previousElementSibling.querySelector('output').value=parseFloat(this.value).toFixed(3)">
-					</div>
-				</div>
-
-        <div class="ctrl-field">
+        <div class="ctrl-hidden">
           <label class="ctrl-label" for="sep-mode">Separated Sites</label>
           <div class="ctrl-segmented">
             <input type="radio" name="separation-radio" id="separation-disabled"   value="disabled"  checked>
@@ -1796,8 +1798,6 @@
                  oninput="this.previousElementSibling.querySelector('output').value=parseFloat(this.value).toFixed(3)">
 					</div>
       </div>
-					<div id="pic-editor"></div>
-    Configuration of the launch sites for the Polygon in Contact transform.  
     </details>
 
     <!-- ── Ornements ─────────────────────────── -->
