@@ -48,7 +48,7 @@ document.getElementById("save-as").addEventListener("click", function () {
 	const url = URL.createObjectURL(blob);
 	const link = document.createElement("a");
 	link.href = url;
-	link.download = "drawing.svg";
+	link.download = "tiling.svg";
 	document.body.appendChild(link);
 	link.click();
 	document.body.removeChild(link);
