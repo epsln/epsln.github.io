@@ -36,7 +36,7 @@ editor.onChange = ({ angle, assymAngle, separatedSite }) => {
 // ─── Save-as SVG ─────────────────────────────────────────────────────────────
 
 document.getElementById("save-as").addEventListener("click", function () {
-	const svg = document.getElementById("app");
+	const svg = document.getElementById("app").querySelector("svg");
 	const clone = svg.cloneNode(true);
 	clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
 	const serializer = new XMLSerializer();
