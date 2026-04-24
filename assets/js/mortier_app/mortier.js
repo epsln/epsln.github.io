@@ -347,7 +347,7 @@ document.getElementById("randomize").addEventListener("click", () => {
 	else
 		document.getElementById("ornements").value = 'none'; 
 	const r1 = Math.random()
-	if (r1 < 2){
+	if (r1 < .2){
 			document.getElementById("sep-mode").value = 'enabled'; 
 			const sep = Math.random()/2;
 			document.getElementById("sep-pos").value = sep
