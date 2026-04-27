@@ -124,19 +124,29 @@ export default class PicEditor {
 
   _t0() {
     const s = this._s0x();
-    return { x: s + this._RLEN * Math.sin(this.a0), y: this._BLY - this._RLEN * Math.cos(this.a0) };
+    return { x: s + this._RLEN * Math.sin(Math.PI/2 - this.a0), y: this._BLY - this._RLEN * Math.cos(Math.PI/ 2 - this.a0) };
   }
   _t1() {
     const s = this._s1x();
-    return { x: s - this._RLEN * Math.sin(this.a1), y: this._BLY - this._RLEN * Math.cos(this.a1) };
+    return { x: s - this._RLEN * Math.sin(Math.PI/2 - this.a1), y: this._BLY - this._RLEN * Math.cos(Math.PI/2 - this.a1) };
   }
 
-  _arcPath(cx, cy, r, deg) {
-    if (Math.abs(deg) < 0.01) return `M${cx},${cy - r}`;
-    const r1 = deg * Math.PI / 180;
-    const x0 = cx, y0 = cy - r;
-    const x1 = cx + r * Math.sin(r1), y1 = cy - r * Math.cos(r1);
-    return `M${x0},${y0} A${r},${r} 0 0 ${deg >= 0 ? 1 : 0} ${x1},${y1}`;
+  // Arc for right-side site: baseline goes rightward (+x).
+  // Sweeps CCW from +x up to ray at angle a above horizontal.
+  _arcPath0(cx, cy, r, a) {
+    if (Math.abs(a) < 0.01) return `M${cx + r},${cy}`;
+    const x0 = cx + r,               y0 = cy;
+    const x1 = cx + r * Math.cos(a), y1 = cy - r * Math.sin(a);
+    return `M${x0},${y0} A${r},${r} 0 0 0 ${x1},${y1}`;
+  }
+
+  // Arc for left-side site: baseline goes leftward (-x).
+  // Sweeps CW from -x up to ray at angle a above horizontal.
+  _arcPath1(cx, cy, r, a) {
+    if (Math.abs(a) < 0.01) return `M${cx - r},${cy}`;
+    const x0 = cx - r,               y0 = cy;
+    const x1 = cx - r * Math.cos(a), y1 = cy - r * Math.sin(a);
+    return `M${x0},${y0} A${r},${r} 0 0 1 ${x1},${y1}`;
   }
 
   // ─── Update ─────────────────────────────────────────────────────────────────
@@ -166,16 +176,16 @@ export default class PicEditor {
     this._hz_tip0.setAttribute('cx', p0.x);  this._hz_tip0.setAttribute('cy', p0.y);
     this._hz_tip1.setAttribute('cx', p1.x);  this._hz_tip1.setAttribute('cy', p1.y);
 
-    this._ac0.setAttribute('d', this._arcPath(sx0, BLY, AR,  this.a0 * 180 / Math.PI));
-    this._ac1.setAttribute('d', this._arcPath(sx1, BLY, AR, -this.a1 * 180 / Math.PI));
+    this._ac0.setAttribute('d', this._arcPath0(sx0, BLY, AR, this.a0));
+    this._ac1.setAttribute('d', this._arcPath1(sx1, BLY, AR, this.a1));
 
-    const loff = AR + 11;
-    const m0 = this.a0 / 2, m1 = -this.a1 / 2;
-    this._lb0.setAttribute('x', sx0 + loff * Math.sin(m0) + 50);
-    this._lb0.setAttribute('y', BLY - loff * Math.cos(m0) + 4);
+    // Label at the bisector of the arc, offset outward
+    const loff = AR + 14;
+    this._lb0.setAttribute('x', sx0 + loff * Math.cos(this.a0 / 2));
+    this._lb0.setAttribute('y', BLY - loff * Math.sin(this.a0 / 2) + 4);
     this._lb0.textContent = this.a0.toFixed(3);
-    this._lb1.setAttribute('x', sx1 + loff * Math.sin(m1) - 50);
-    this._lb1.setAttribute('y', BLY - loff * Math.cos(m1) + 4);
+    this._lb1.setAttribute('x', sx1 - loff * Math.cos(this.a1 / 2));
+    this._lb1.setAttribute('y', BLY - loff * Math.sin(this.a1 / 2) + 4);
     this._lb1.textContent = this.a1.toFixed(3);
     this._ov0.innerHTML = `angle₀&nbsp;<b>${this.a0.toFixed(2)}</b>`;
     this._ov1.innerHTML = `angle₁&nbsp;<b>${this.a1.toFixed(2)}</b>`;
@@ -224,19 +234,20 @@ export default class PicEditor {
       const BLY = this._BLY;
 
       if (this._drag === 'tip0') {
-        const dy = BLY - p.y;
-        if (dy > 4){
+        const dy =  BLY - p.y;
+				if (dy > 4){
           this.a0 = Math.max(0.001, Math.min(Math.PI / 2 - 0.01,
-            Math.atan2(p.x - this._s0x(), dy)));
+            Math.PI/ 2 - Math.atan2(p.x - this._s0x(), dy)));
 				  if (this.symmetric) this.a1 = this.a0;
-			}
+				}
       } else if (this._drag === 'tip1') {
         const dy = BLY - p.y;
+				console.log("moved tip1");
         if (dy > 4){
           this.a1 = Math.max(0.001, Math.min(Math.PI / 2 - 0.01,
-            Math.atan2(this._s1x() - p.x, dy)));
-				}
+            Math.PI/2 - Math.atan2(this._s1x() - p.x, dy)));
 				  if (this.symmetric) this.a0 = this.a1;
+				}
 			} else if(this._drag==='site0'){
 				this.sep=Math.min(Math.max(0, p.x - this._W/2), this._W/2 - this._LX);
 				this.dist = 0.5 - this.sep/(this._W/2 - this._LX)/2;
