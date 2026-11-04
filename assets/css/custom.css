@@ -1,3 +1,28 @@
 body:not(.dark-theme) img{
   filter: invert(1) opacity(0.85) !important;
 }
+
+/* Layout: let the main scroll area fill the space next to the sidebar
+   and center the readable column inside it (instead of hugging the left). */
+@media (min-width: 48em) {
+  main.centered-main {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  main.centered-main > * {
+    max-width: 44rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Scale up on very large / high-res screens (e.g. 4K at 100% zoom) */
+@media (min-width: 120em) {
+  html { font-size: 24px; }
+}
+@media (min-width: 180em) {
+  html { font-size: 30px; }
+}
