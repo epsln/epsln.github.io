@@ -9,7 +9,7 @@
   {{ end }}
 </div>
 {{ $script := resources.Get "js/mortier_app/mortier.js" | js.Build }}
-		<script src="{{ $script.Permalink }}" type="module" media="screen"></script>
+		<script src="{{ $script.RelPermalink }}" type="module" media="screen"></script>
 {{ $styles := resources.Get "css/main.css" | minify }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
 {{- end }}

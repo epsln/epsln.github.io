@@ -13,7 +13,7 @@
   --sb-radius:      6px;
   --sb-font-ui:     "DM Sans", "Helvetica Neue", system-ui, sans-serif;
   --sb-font-mono:   "JetBrains Mono", "Fira Mono", ui-monospace, monospace;
-  --sb-width:       360px;
+  --sb-width:       500px;
   --sb-transition:  140ms ease;
 }
 
@@ -58,6 +58,30 @@
   color: var(--sb-text);
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;          /* keep sidebar above the tiling canvas */
+}
+
+/* Theme (hyde.css) forces .sidebar-sticky to 16rem and .container to 38rem
+   with side padding, which squeezes the controls. Fill the sidebar instead. */
+.sidebar .sidebar-sticky {
+  width: 100%;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Keep the tiling inside the content area so it can't spill over the sidebar */
+@media (min-width: 769px) {
+  .container.content {
+    min-width: 0;
+    overflow: hidden;
+  }
+  #app {
+    overflow: hidden;
+  }
 }
 
 .sidebar-sticky {
@@ -600,6 +624,7 @@ button:disabled {
   .sidebar {
     width: 100%; 
     min-width: 0;
+    max-width: none;
     border-right: none;
     border-bottom: 1px solid var(--sb-border);
   }

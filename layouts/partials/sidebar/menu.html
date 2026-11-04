@@ -1,7 +1,7 @@
 <nav>
     <ul class="sidebar-nav">
 
-				<a href="http://ec2-16-170-248-200.eu-north-1.compute.amazonaws.com/mortier/mortier/">Mortier</a>
+				<a href="{{ "mortier/mortier/" | relURL }}">Mortier</a>
         {{ $sections := .Site.Sections.ByTitle }}
         {{ $taxonomies := .Site.Taxonomies }}
         {{ range .Site.Params.menu }}
