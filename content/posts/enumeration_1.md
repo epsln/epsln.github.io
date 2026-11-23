@@ -6,7 +6,7 @@ draft: false
 
 {{< figure src="/enumeration_1/example_14-archimedean.png" alt="A 14-Archimedean Tiling" caption="A 14-Archimedean Tiling" >}}
 
-I must admit: for quite some times now I have been disinterested in Fractals and Dynamical Systems. In the past year, most of my brain-time was spent thinking about tilings. I developped [Mortier](https://github.com/epsln/mortier), a tiling generator in Python which was based on a particular Tiling representation using $\mathbb{Z}^4$ vectors. As it _represents_ something, I needed _something_ to represent, i.e. a tiling database. The original thesis gathers theirs from a few different sources, but it is ultimately quite limited. I needed more. 
+I must admit: for quite some times now I have been disinterested in Fractals and Dynamical Systems. In the past year, most of my brain-time was spent thinking about tilings. I developped [Mortier](https://github.com/epsln/mortier), a tiling generator in Python which was based on a particularily nice representation using $\mathbb{Z}^4$ vectors (first developped in a gorgeous looking thesis by Soto Sánchez [1]). As it _represents_ something, I needed _something_ to represent, i.e. a tiling database. The original thesis gathers theirs from a few different sources, but it is ultimately quite limited. I needed more. 
 
 I thought to myself: the tilings used here are quite simple. They use convex regular polygons as tiles and are edge-to-edge meaning that each edge of the tile is associated to only one edge of another tile. There is a limited amount of ways you can assemble those tiles around a vertex and we can just construct larger tilings by assembling those configurations. There should be _someone_, _somewhere_ which has already done the job right ? Those tilings are known since Euclid (!), so I should be able to just find it somewhere right ? 
 
@@ -49,7 +49,7 @@ There is a finite amount of those configurations, but not all are able to be til
 A $k$-uniform tiling is then simply a collection of those configurations. However, since those configurations repeat themselves on the plane, how can we differentiate between a "new" configuration and one that is just a copy along a symmetry ?
 
 ### Vertex Transitivity and Orbits
-The notion of $k$-uniformity was introduced by Krötenheerdt [2] and popularised by Grünbaum and Shephard [1, 3]. It helps differentiate tilings which have the same configurations but with different symmetries. 
+The notion of $k$-uniformity was introduced by Krötenheerdt [3] and popularised by Grünbaum and Shephard [2, 4]. It helps differentiate tilings which have the same configurations but with different symmetries. 
 
 For example the 3-uniform tiling $[(3^2 \cdot 6^2), (3 \cdot 6 \cdot 3 \cdot 6), (6^3)]$ has two distinct associated tilings. 
 
@@ -66,9 +66,9 @@ Now that we've defined our eggs, flour, milk and sugar, let's mix it all up to b
 
 The $k$-uniform tilings are Euclidean tilings which only use regular polygons, are edge-to-edge, and have exactly $k$ vertex orbits under their symmetry group. 
 
-There are 21 ways to arrange regular polygons around a shared vertex, but only 15 of them can appear in a tiling of the plane [1]. Not all of those 15 can tile the plane by themselves: only 11 can, and they form the 11 1-uniform tilings. 
+There are 21 ways to arrange regular polygons around a shared vertex, but only 15 of them can appear in a tiling of the plane [2]. Not all of those 15 can tile the plane by themselves: only 11 can, and they form the 11 1-uniform tilings. 
 
-With 2 orbits, we have 20 2-uniform tilings [3]. 3 gives out 61 tilings [4]. Note that those tilings are defined by some kind of "skeleton": a fixed number of configurations which are tiled using some actions in the Euclidean Crystallographic Group. 
+With 2 orbits, we have 20 2-uniform tilings [4]. 3 gives out 61 tilings [5]. Note that those tilings are defined by some kind of "skeleton": a fixed number of configurations which are tiled using some actions in the Euclidean Crystallographic Group. 
 
 A tiling can also be described by the _set_ of vertex configurations. The number of element in that set gives the $m$-archimedean number for that tiling. A tiling with 5 unique configurations and 7 counting repetition is therefore $5$-archimedean and 7-uniform.
 
@@ -81,9 +81,9 @@ So, we've defined our bread and butter. We'll restrict our search to the k-unifo
 
 How can we do it ? 
 
-I honestly thought that this would be some kind of solved problem long ago. Turns out that the combinatorial nature of tilings have not been explored as much as I thought ! I quickly found this [repository](https://github.com/Fulgur14/k-uniform-solver) [12], which implements a very particular algorithm. This technique has not been peer reviewed, but there is some strong indication that it is indeed exhaustive. The algorithm is called _The Synthetic Tiling Searcher_ or STS for the ball knower. 
+I honestly thought that this would be some kind of solved problem long ago. Turns out that the combinatorial nature of tilings have not been explored as much as I thought ! I quickly found this [repository](https://github.com/Fulgur14/k-uniform-solver) [13], which implements a very particular algorithm. This technique has not been peer reviewed, but there is some strong indication that it is indeed exhaustive. The algorithm is called _The Synthetic Tiling Searcher_ or STS for the ball knower. 
 
-Something of note: the counts which are available in the [List of $k$-uniform Tilings wikipedia article](https://en.wikipedia.org/wiki/List_of_k-uniform_tilings), along with a bunch of other papers often reference an enumeration from [Galebach](https://probabilitysports.com/tilings.html) [5]. However, they never published the Algorithm used (or the code for that matter), which makes it impossible to verify. However, the counts obtained by the STS Algorithm do agree with theirs.
+Something of note: the counts which are available in the [List of $k$-uniform Tilings wikipedia article](https://en.wikipedia.org/wiki/List_of_k-uniform_tilings), along with a bunch of other papers often reference an enumeration from [Galebach](https://probabilitysports.com/tilings.html) [6]. However, they never published the Algorithm used (or the code for that matter), which makes it impossible to verify. However, the counts obtained by the STS Algorithm do agree with theirs.
 
 I'll expose here the STS Algorithm along with the data structures used here. 
 
@@ -91,7 +91,7 @@ I'll expose here the STS Algorithm along with the data structures used here.
 Looking at $k$-uniform tilings, you might think that the task is somewhat simple. $k$-uniform tilings are basically composed using $k$ configurations which are next to each other. An algorithm to enumerate those tilings might just be something that "glues" a configuration onto another one and checks if it's a valid tiling. But how do we represent those configurations ? 
 
 ### Combinatorial Maps
-We can start by thinking about our configurations as a *graph embedding*. In other words, our configuration are some kind of graph embedded on a 2D Euclidean Surface. We also need to encode the cyclic order of faces around a vertex. A *combinatorial map* [6] is a particular data structure which is well suited for this, but we'll extend it slightly for our needs.
+We can start by thinking about our configurations as a *graph embedding*. In other words, our configuration are some kind of graph embedded on a 2D Euclidean Surface. We also need to encode the cyclic order of faces around a vertex. A *combinatorial map* [7] is a particular data structure which is well suited for this, but we'll extend it slightly for our needs.
 
 First off, we'll split edges into two parts, called *darts*. This way, it's easier to think about "gluing" two configurations together: we'll just connect the two halves of an edge together. 
 
@@ -289,7 +289,7 @@ Extension is either *pairing*, i.e. attaching the edge with another free edge in
 
 Choosing the tightest edge is only a heuristic: it makes the search faster, but does not change what is found. We'll see why the search is exhaustive in the parting thoughts.
 
-A State becomes a *Complete State* when every edge is paired: it's now a tiling ! The reason why is fairly complex, and I might explain it in a further article (once I actually understand it fully), but the main gist of it is: a Complete State is actually a [closed flat orbifold](https://ncatlab.org/nlab/show/orbifold) [7] whose universal cover is a tiling of the Euclidean plane.
+A State becomes a *Complete State* when every edge is paired: it's now a tiling ! The reason why is fairly complex, and I might explain it in a further article (once I actually understand it fully), but the main gist of it is: a Complete State is actually a [closed flat orbifold](https://ncatlab.org/nlab/show/orbifold) [8] whose universal cover is a tiling of the Euclidean plane.
 
 We continue this exploration until we have reached the maximum number of configurations in a state. Put together, the exploration looks like this:
 
@@ -367,7 +367,7 @@ A big issue with this approach is that the representation of a given tiling is n
 Duplicates happen for the simple reason that two states might represent the same tiling, but with different indices. Worse, a single tiling is represented by infinitely many states: one for each finite-index subgroup of its symmetry group (each one a bigger quotient of the tiling), and each of those comes with its own relabellings ! 
 
 
-Our deduplication is actually akin to a _graph isomorphism problem_. Graph isomorphism is in NP, but it is not known to be NP-complete, and it can be solved in quasi-polynomial time [8]. In other word: it's a hard problem. Our case is much easier anyway: each dart has exactly one right neighbor, one left neighbor and one glue partner. Once we choose the image of a single dart, the image of every other dart is forced, so isomorphism can be tested in polynomial time.
+Our deduplication is actually akin to a _graph isomorphism problem_. Graph isomorphism is in NP, but it is not known to be NP-complete, and it can be solved in quasi-polynomial time [9]. In other word: it's a hard problem. Our case is much easier anyway: each dart has exactly one right neighbor, one left neighbor and one glue partner. Once we choose the image of a single dart, the image of every other dart is forced, so isomorphism can be tested in polynomial time.
 
 In the original implementation the deduplication step uses a relabeling algorithm, which given two States tries to find a bijection $\pi$ between the darts by finding a way to change the label of the first state into the second one and keeping all of its attributes intact.  
 
@@ -445,7 +445,7 @@ The search therefore stops, even though your patience might stop first.
 ### Soundness 
 We must also show that every complete state, which is the end product of our search, is a tiling. 
 
-In a Complete State, every dart is glued, and the validation guarantees that every polygon ring closes with a segment count dividing its nominal size. The angles around each vertex already sum to $2\pi$, because each catalogue entry is a valid vertex configuration. Gluing regular polygons along their edges in this way gives a closed flat orbifold, and unrolling it onto the plane (its universal cover) gives an edge-to-edge tiling by regular polygons [7]. 
+In a Complete State, every dart is glued, and the validation guarantees that every polygon ring closes with a segment count dividing its nominal size. The angles around each vertex already sum to $2\pi$, because each catalogue entry is a valid vertex configuration. Gluing regular polygons along their edges in this way gives a closed flat orbifold, and unrolling it onto the plane (its universal cover) gives an edge-to-edge tiling by regular polygons [8]. 
 
 However, this is quite handwavy: you'd need to prove that this step _actually_ produce this orbifold. 
 
@@ -475,10 +475,10 @@ The pruning rules must not break the induction. The search does not try every op
 ### Limitations 
 If both assumptions hold, every $k$-uniform tiling with at most `maxVertices` vertex orbits is found. The search bounds the number of catalogue entries in a state, which is why the bound on vertices translates into a bound on $k$. The weak points are the two assumptions, the soundness step, and whether the refinement test used for deduplication is exact, which I mentioned earlier. 
 
-We know that the algorithm works pretty well, and agrees with previous counts by Galebach [5]. However, those counts cannot substitute to an actual proof that the algorithm _actually_ enumerates all of the k-uniform tilings, published in peer-reviewed journal. One day, one day...
+We know that the algorithm works pretty well, and agrees with previous counts by Galebach [6]. However, those counts cannot substitute to an actual proof that the algorithm _actually_ enumerates all of the k-uniform tilings, published in peer-reviewed journal. One day, one day...
 
 ## Parting thoughts
-The STS algorithm is quite clever, and I haven't found it described anywhere else. It allows for enumeration of k-uniform tilings, but can also be extended to other tiling families and spaces. I did not mention another obvious tiling enumeration approach, which uses [Delaney-Dress Symbols](https://epinet.anu.edu.au/page/epinet2_mathematics_delaney_dress) [9, 10] and is able to [enumerate every periodic tiling up to a given complexity](https://arxiv.org/html/2007.10625v1) [11] (!). However, this technique is actually slightly too general and a bit hard to adapt to a specific tiling family. 
+The STS algorithm is quite clever, and I haven't found it described anywhere else. It allows for enumeration of k-uniform tilings, but can also be extended to other tiling families and spaces. I did not mention another obvious tiling enumeration approach, which uses [Delaney-Dress Symbols](https://epinet.anu.edu.au/page/epinet2_mathematics_delaney_dress) [10, 11] and is able to [enumerate every periodic tiling up to a given complexity](https://arxiv.org/html/2007.10625v1) [12] (!). However, this technique is actually slightly too general and a bit hard to adapt to a specific tiling family. 
 
 I must also mention that a Master Thesis was done on the subject matter by Alessandro Lundo, which is also quite complete. This person is also the creator of [The Tiling Atlas](https://www.thetilingatlas.com/) which tries to catalogue every tiling out there. They have implemented a nice visualiser for it, along with a version of the STS algorithm, which is apparently faster than mine (grrrr). 
 
@@ -490,15 +490,16 @@ I'll explain the optimisations done in a following article, and the results in a
 
 ## References
 
-1. B. Grünbaum and G. C. Shephard, *Tilings and Patterns*. W. H. Freeman, New York, 1987 (2nd ed., Dover, 2016).
-2. O. Krötenheerdt, "Die homogenen Mosaike $n$-ter Ordnung in der euklidischen Ebene I–III", *Wiss. Z. Martin-Luther-Univ. Halle-Wittenberg, Math.-Naturwiss. Reihe* 18 (1969) 273–290; 19 (1970) 19–38 and 97–122.
-3. B. Grünbaum and G. C. Shephard, "Tilings by Regular Polygons", *Mathematics Magazine* 50(5) (1977) 227–247.
-4. D. Chavey, "Tilings by Regular Polygons — II: A Catalog of Tilings", *Computers & Mathematics with Applications* 17(1–3) (1989) 147–165.
-5. B. L. Galebach, "n-Uniform Tilings", [probabilitysports.com/tilings.html](https://probabilitysports.com/tilings.html).
-6. S. K. Lando and A. K. Zvonkin, *Graphs on Surfaces and Their Applications*. Springer, 2004.
-7. J. H. Conway, H. Burgiel and C. Goodman-Strauss, *The Symmetries of Things*. A K Peters, 2008.
-8. L. Babai, "Graph Isomorphism in Quasipolynomial Time", *Proc. 48th ACM STOC* (2016) 684–697. [arXiv:1512.03547](https://arxiv.org/abs/1512.03547).
-9. A. W. M. Dress, "Presentations of discrete groups, acting on simply connected manifolds, in terms of parametrized systems of Coxeter matrices — a systematic approach", *Advances in Mathematics* 63(2) (1987) 196–212.
-10. O. Delgado-Friedrichs, "Data structures and algorithms for tilings I", *Theoretical Computer Science* 303(2–3) (2003) 431–445.
-11. R. Zeller, O. Delgado-Friedrichs and D. H. Huson, "Tegula — exploring a galaxy of two-dimensional periodic tilings", 2020. [arXiv:2007.10625](https://arxiv.org/abs/2007.10625).
-12. Fulgur14, *k-uniform-solver* (source code of the STS algorithm), [github.com/Fulgur14/k-uniform-solver](https://github.com/Fulgur14/k-uniform-solver).
+1. J. E. Soto Sánchez, *On Periodic Tilings with Regular Polygons*, PhD thesis, Instituto de Matemática Pura e Aplicada (IMPA), Rio de Janeiro, 2020. [chequesoto.info/docs/Tilings_JESotoS_hires.pdf](https://chequesoto.info/docs/Tilings_JESotoS_hires.pdf).
+2. B. Grünbaum and G. C. Shephard, *Tilings and Patterns*. W. H. Freeman, New York, 1987 (2nd ed., Dover, 2016).
+3. O. Krötenheerdt, "Die homogenen Mosaike $n$-ter Ordnung in der euklidischen Ebene I–III", *Wiss. Z. Martin-Luther-Univ. Halle-Wittenberg, Math.-Naturwiss. Reihe* 18 (1969) 273–290; 19 (1970) 19–38 and 97–122.
+4. B. Grünbaum and G. C. Shephard, "Tilings by Regular Polygons", *Mathematics Magazine* 50(5) (1977) 227–247.
+5. D. Chavey, "Tilings by Regular Polygons — II: A Catalog of Tilings", *Computers & Mathematics with Applications* 17(1–3) (1989) 147–165.
+6. B. L. Galebach, "n-Uniform Tilings", [probabilitysports.com/tilings.html](https://probabilitysports.com/tilings.html).
+7. S. K. Lando and A. K. Zvonkin, *Graphs on Surfaces and Their Applications*. Springer, 2004.
+8. J. H. Conway, H. Burgiel and C. Goodman-Strauss, *The Symmetries of Things*. A K Peters, 2008.
+9. L. Babai, "Graph Isomorphism in Quasipolynomial Time", *Proc. 48th ACM STOC* (2016) 684–697. [arXiv:1512.03547](https://arxiv.org/abs/1512.03547).
+10. A. W. M. Dress, "Presentations of discrete groups, acting on simply connected manifolds, in terms of parametrized systems of Coxeter matrices — a systematic approach", *Advances in Mathematics* 63(2) (1987) 196–212.
+11. O. Delgado-Friedrichs, "Data structures and algorithms for tilings I", *Theoretical Computer Science* 303(2–3) (2003) 431–445.
+12. R. Zeller, O. Delgado-Friedrichs and D. H. Huson, "Tegula — exploring a galaxy of two-dimensional periodic tilings", 2020. [arXiv:2007.10625](https://arxiv.org/abs/2007.10625).
+13. Fulgur14, *k-uniform-solver* (source code of the STS algorithm), [github.com/Fulgur14/k-uniform-solver](https://github.com/Fulgur14/k-uniform-solver).
