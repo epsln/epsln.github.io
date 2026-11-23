@@ -4,6 +4,8 @@ date: 2026-11-02T11:56:29+01:00
 draft: false 
 ---
 
+{{< figure src="/enumeration_1/example_14-archimedean.png" alt="A 14-Archimedean Tiling" caption="A 14-Archimedean Tiling" >}}
+
 I must admit: for quite some times now I have been disinterested in Fractals and Dynamical Systems. In the past year, most of my brain-time was spent thinking about tilings. I developped [Mortier](https://github.com/epsln/mortier), a tiling generator in Python which was based on a particular Tiling representation using $\mathbb{Z}^4$ vectors. As it _represents_ something, I needed _something_ to represent, i.e. a tiling database. The original thesis gathers theirs from a few different sources, but it is ultimately quite limited. I needed more. 
 
 I thought to myself: the tilings used here are quite simple. They use convex regular polygons as tiles and are edge-to-edge meaning that each edge of the tile is associated to only one edge of another tile. There is a limited amount of ways you can assemble those tiles around a vertex and we can just construct larger tilings by assembling those configurations. There should be _someone_, _somewhere_ which has already done the job right ? Those tilings are known since Euclid (!), so I should be able to just find it somewhere right ? 
@@ -67,6 +69,8 @@ The $k$-uniform tilings are Euclidean tilings which only use regular polygons, a
 There are 21 ways to arrange regular polygons around a shared vertex, but only 15 of them can appear in a tiling of the plane [1]. Not all of those 15 can tile the plane by themselves: only 11 can, and they form the 11 1-uniform tilings. 
 
 With 2 orbits, we have 20 2-uniform tilings [3]. 3 gives out 61 tilings [4]. Note that those tilings are defined by some kind of "skeleton": a fixed number of configurations which are tiled using some actions in the Euclidean Crystallographic Group. 
+
+A tiling can also be described by the _set_ of vertex configurations. The number of element in that set gives the $m$-archimedean number for that tiling. A tiling with 5 unique configurations and 7 counting repetition is therefore $5$-archimedean and 7-uniform.
 
 As an aside, I will also define the following conventions. When I write $[s_0, s_1, ..., s_n]$, with $s_0, s_1, ..., s_n \in \mathbb{Z}$, I describe a _list of polygons_ using the number of sides to describe them. A _vertex configuration_, which allows permutations is written as $(s_0, s_1,...,s_n)$. A specific vertex configurations is written as $(s_0 \cdot s_1 \cdot ... \cdot s_n)$. 
 
