@@ -30,7 +30,7 @@ Here, we'll only be interested in the Euclidean Plane. Of course, tilings can (a
 
 $k$-uniform tilings are also edge-to-edge. This means that an edge of a tile is next to only one edge of another tile. 
 
-This last condition means that a K-uniform tilings is defined based on a set of "vertex configurations" or arrangements of regular polygons around a central vertex. 
+This last condition means that a k-uniform tilings is defined based on a set of "vertex configurations" or arrangements of regular polygons around a central vertex. 
 
 ### Vertex Configurations
 A vertex configuration is a set of regular polygon that can be placed around a shared vertex without overlapping or gaps. In other words, this means that the sum of angles meeting a vertex must equal to $2 \pi$. 
@@ -480,7 +480,7 @@ We know that the algorithm works pretty well, and agrees with previous counts by
 ## Parting thoughts
 The STS algorithm is quite clever, and I haven't found it described anywhere else. It allows for enumeration of k-uniform tilings, but can also be extended to other tiling families and spaces. I did not mention another obvious tiling enumeration approach, which uses [Delaney-Dress Symbols](https://epinet.anu.edu.au/page/epinet2_mathematics_delaney_dress) [10, 11] and is able to [enumerate every periodic tiling up to a given complexity](https://arxiv.org/html/2007.10625v1) [12] (!). However, this technique is actually slightly too general and a bit hard to adapt to a specific tiling family. 
 
-I must also mention that a Master Thesis was done on the subject matter by Alessandro Lundo, which is also quite complete. This person is also the creator of [The Tiling Atlas](https://www.thetilingatlas.com/) which tries to catalogue every tiling out there. They have implemented a nice visualiser for it, along with a version of the STS algorithm, which is apparently faster than mine (grrrr). 
+I must also mention that a Master Thesis was done on the subject matter by Alessandro Longo, which is also quite complete. This person is also the creator of [The Tiling Atlas](https://www.thetilingatlas.com/) which tries to catalogue every tiling out there. They have implemented a nice visualiser for it, along with a version of the STS algorithm, which is apparently faster than mine (grrrr). 
 
 Anyway. I wanted to have my own world record, and I found out that the original STS implementation only went as far as $k = 13$, which took a full week to compute. This implementation was working with a single thread, and in Python so I thought that I could spend a week or so, implement it in C++, multithread it and with some tweaks, bob's your uncle, I'd have my record. I set my sight to $k = 20$ and went to work.
 
